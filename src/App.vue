@@ -1,11 +1,11 @@
 <script setup>
-import AppHeader from './components/AppHeader.vue';
-import AppWelcome from './components/AppWelcome.vue'
+import HomePage from './pages/HomePage.vue';
 </script>
 
 <template>
-  <AppHeader  />
-  <AppWelcome />
+  
+  <HomePage />
+  
 </template>
 
 <style scoped>
