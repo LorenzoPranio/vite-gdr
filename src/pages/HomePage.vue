@@ -116,15 +116,15 @@ export default {
         <button class="next"><img class="btn-svg" src="../assets/Bow-Arrow-RX.svg"></button>
       </div>
     </div>
-  </template>
+</template>
 <style lang="scss">
 .container {
     position: relative;
-    margin-top: 50px;
     width: 800px;
     height: 480px;
     background: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
+    margin-top: 50px;
 }
 
 .container .slide .item {

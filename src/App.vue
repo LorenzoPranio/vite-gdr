@@ -1,10 +1,14 @@
 <script setup>
-import HomePage from './pages/HomePage.vue';
+import Characters from './pages/Characters.vue';
+import AppNavbar from './components/AppNavbar.vue';
+import AppFooter from './components/AppFooter.vue';
 </script>
 
 <template>
-  
-  <HomePage />
+
+  <AppNavbar />
+  <Characters />
+  <AppFooter />
   
 </template>
 
