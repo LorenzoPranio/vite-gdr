@@ -1,13 +1,9 @@
 <script>
-export default {
-    
-}
+export default {};
 </script>
-<template lang="">
-    <div>
-        
-    </div>
+<template>
+	<div>
+		<h1>ciao</h1>
+	</div>
 </template>
-<style lang="">
-    
-</style>
+<style lang=""></style>
