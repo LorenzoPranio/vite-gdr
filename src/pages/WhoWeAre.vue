@@ -1,7 +1,6 @@
 <script>
 export default {
     mounted() {
-        // Funzione per la sequenza di animazione del contenuto al caricamento della pagina
         window.addEventListener('load', () => {
             const elements = document.querySelectorAll('.team-member');
             let delay = 300; // Ritardo in millisecondi tra ogni elemento
@@ -72,10 +71,9 @@ export default {
 
 
 <style lang="scss">
-    /* Applica uno sfondo nero all'intera pagina e imposta il testo in bianco */
-/* Applica uno sfondo nero all'intera pagina e imposta il testo in bianco */
+
 .bg-black {
-    background-color: #121212; /* Colore nero scuro */
+    background-color: #121212;
     color: white;
     height: 100vh;
     display: flex;
@@ -83,74 +81,70 @@ export default {
     align-items: center;
 }
 
-/* Stile per il contenitore principale */
+
 .container {
     padding: 40px;
     max-width: 900px;
 }
 
-/* Stile per l'intestazione */
+
 h1 {
-    color: #00aaff; /* Colore blu */
+    color: #00aaff;
     font-weight: 700;
-    text-transform: uppercase; /* Testo maiuscolo */
-    font-size: 2.5rem; /* Dimensione del font più grande */
+    text-transform: uppercase;
+    font-size: 2.5rem;
 }
 
 h2 {
-    color: #ffffff; /* Colore bianco per il sottotitolo */
+    color: #ffffff;
     font-weight: 600;
-    font-size: 2rem; /* Dimensione del font */
+    font-size: 2rem;
 }
 
-/* Stile per i membri del team */
 .team-member {
-    margin-bottom: 30px; /* Spazio maggiore tra i membri */
+    margin-bottom: 30px;
 }
 
-/* Stile per la card del team */
 .card {
-    background-color: #1e1e1e; /* Colore card scuro */
+    background-color: #1e1e1e;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Effetto hover sulle card */
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* Stile per le immagini */
+
 .card-img-top {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-/* Stile per il testo */
 .card-title {
     font-weight: bold;
-    font-size: 1.5rem; /* Dimensione del font per il titolo */
+    font-size: 1.5rem;
 }
 
 .card-text {
-    color: #00aaff; /* Colore blu per la posizione */
-    font-weight: 600; /* Testo in grassetto */
+    color: #00aaff;
+    font-weight: 600;
 }
 
 .card-description {
-    font-size: 0.9rem; /* Dimensione del font per la descrizione */
-    color: #d1d1d1; /* Colore grigio chiaro */
-    margin-top: 10px; /* Spazio sopra la descrizione */
+    font-size: 0.9rem;
+    color: #d1d1d1;
+    margin-top: 10px;
 }
 
-/* Stile per il paragrafo */
 p {
     text-align: center;
-    color: #d1d1d1; /* Colore grigio chiaro */
-    margin-bottom: 20px; /* Maggiore spazio tra i paragrafi */
-    font-size: 1rem; /* Dimensione del font */
+    color: #d1d1d1;
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
 
 </style>

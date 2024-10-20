@@ -1,6 +1,19 @@
+<script>
+export default {
+  data() {
+    return {
+      isFooterOpen: false,
+    };
+  },
+  methods: {
+    toggleFooter() {
+      this.isFooterOpen = !this.isFooterOpen;
+    },
+  },
+};
+</script>
 <template>
     <div>
-      <!-- Footer Container -->
       <footer :class="['footer', { is_open: isFooterOpen }]">
         <div class="footer-header text-center" @click="toggleFooter">
           <h2>Get in Touch</h2>
@@ -9,7 +22,6 @@
           </svg>
         </div>
   
-        <!-- Expanded Content -->
         <transition name="fade">
           <div v-if="isFooterOpen" class="footer-content text-center">
             <p>Contact us for more information or follow us on our social media channels.</p>
@@ -30,24 +42,7 @@
       </footer>
     </div>
   </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        isFooterOpen: false,
-      };
-    },
-    methods: {
-      toggleFooter() {
-        this.isFooterOpen = !this.isFooterOpen;
-      },
-    },
-  };
-  </script>
-  
   <style scoped>
-  /* General Footer Style */
   .footer {
     background: linear-gradient(45deg, #02324a, #045b83);
     color: #fff;
@@ -91,7 +86,6 @@
     transform: rotate(180deg);
   }
   
-  /* Fade transition for content */
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s ease;
   }
@@ -100,7 +94,6 @@
     opacity: 0;
   }
   
-  /* Footer Content */
   .footer-content {
     margin-top: 20px;
     font-size: 1rem;
@@ -108,14 +101,12 @@
     animation: fadeIn 0.6s forwards;
   }
   
-  /* Animations */
   @keyframes fadeIn {
     to {
       opacity: 1;
     }
   }
   
-  /* Social Media Links */
   .social-icons {
     display: flex;
     gap: 20px;
@@ -141,7 +132,6 @@
     transform: scale(1.1);
   }
   
-  /* CTA Button */
   .cta-button {
     background-color: #337a96;
     color: #fff;

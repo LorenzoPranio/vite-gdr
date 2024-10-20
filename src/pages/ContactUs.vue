@@ -14,51 +14,50 @@ export default {
             });
         });
 
-        // Funzione per aggiungere animazioni interattive agli input
+
         const inputs = document.querySelectorAll('.form-control');
 
         inputs.forEach(input => {
             input.addEventListener('focus', function() {
-                this.style.transform = 'scale(1.05)'; // Ingrandisce l'input
-                this.style.boxShadow = '0 0 15px rgba(0, 170, 255, 0.5)'; // Effetto glow
+                this.style.transform = 'scale(1.05)'; 
+                this.style.boxShadow = '0 0 15px rgba(0, 170, 255, 0.5)'; 
             });
 
             input.addEventListener('blur', function() {
-                this.style.transform = 'scale(1)'; // Torna alla dimensione originale
-                this.style.boxShadow = 'none'; // Rimuove il glow
+                this.style.transform = 'scale(1)'; 
+                this.style.boxShadow = 'none';
 
-                // Se l'input è vuoto, scuote l'elemento
+
                 if (!this.value.trim()) {
                     this.classList.add('shake');
-                    setTimeout(() => this.classList.remove('shake'), 500); // Rimuove l'effetto di shake dopo 0.5 secondi
+                    setTimeout(() => this.classList.remove('shake'), 500);
                 }
             });
         });
 
-        // Gestione submit form con animazione di successo o errore
         const form = document.querySelector('form');
         form.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Disabilita il pulsante e aggiunge un effetto di invio
+
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.classList.add('sending');
 
-            // Simulazione di invio (puoi sostituirlo con una chiamata API reale)
+
             setTimeout(() => {
                 submitButton.classList.remove('sending');
-                submitButton.classList.add('sent'); // Animazione di successo
+                submitButton.classList.add('sent'); 
                 submitButton.textContent = 'Messaggio inviato!';
                 
-                // Reimposta il form dopo 2 secondi
+
                 setTimeout(() => {
                     submitButton.disabled = false;
                     submitButton.classList.remove('sent');
                     submitButton.textContent = 'Invia Messaggio';
                     form.reset();
                 }, 2000);
-            }, 1500); // Simula un invio ritardato
+            }, 1500); 
         });
     },
 }
@@ -93,7 +92,6 @@ export default {
                             <textarea class="form-control" id="messaggio" rows="5" placeholder="Il tuo messaggio" required></textarea>
                         </div>
     
-                        <!-- Aggiungiamo la classe form-group per applicare l'animazione anche al pulsante -->
                         <div class="form-group d-grid">
                             <button type="submit" class="btn btn-primary btn-lg">Invia Messaggio</button>
                         </div>
@@ -105,7 +103,7 @@ export default {
 </template>
     
 <style lang="scss">
-/* Applica uno sfondo nero all'intera pagina e imposta il testo in bianco */
+
 .bg-black {
     background-color: black;
     color: white;
@@ -117,12 +115,11 @@ export default {
     overflow: hidden;
 }
 
-/* Stile per il contenitore del modulo */
 .contact-container {
     background-color: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra più forte */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     max-width: 600px;
     width: 100%;
     opacity: 0;
@@ -130,7 +127,6 @@ export default {
     animation: fadeInUp 1s forwards ease-in-out;
 }
 
-/* Animazione per far comparire il contenitore in modo elegante */
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -138,23 +134,23 @@ export default {
     }
 }
 
-/* Stile per l'intestazione */
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #222; /* Un nero più morbido */
+    color: #222; 
     font-weight: 700;
 }
 
-/* Stile per la descrizione */
+
 p {
     text-align: center;
     margin-bottom: 40px;
-    color: #8f8f8f; /* Colore più tenue */
+    color: #8f8f8f; 
     font-size: 18px;
 }
 
-/* Etichetta dei campi */
+
 .contact-form label {
     font-weight: bold;
     margin-bottom: 8px;
@@ -162,7 +158,7 @@ p {
     font-size: 16px;
 }
 
-/* Stile degli input e del textarea */
+
 .contact-form input, 
 .contact-form textarea {
     padding: 12px;
@@ -175,15 +171,15 @@ p {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Effetto focus interattivo sugli input */
+
 .contact-form input:focus, 
 .contact-form textarea:focus {
     outline: none;
     border-color: #00aaff;
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3); /* Effetto glow */
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3); 
 }
 
-/* Stile per il pulsante */
+
 button {
     padding: 12px;
     background-color: #00aaff;
@@ -195,28 +191,27 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 170, 255, 0.3); /* Ombra leggera */
+    box-shadow: 0 4px 8px rgba(0, 170, 255, 0.3);
 }
 
-/* Effetto hover sul pulsante */
+
 button:hover {
     background-color: #0088cc;
-    transform: scale(1.05); /* Effetto ingrandimento al passaggio del mouse */
+    transform: scale(1.05);
 }
 
-/* Effetto di clic sul pulsante */
 button:active {
-    transform: scale(0.98); /* Leggero effetto di pressione */
+    transform: scale(0.98); 
 }
 
-/* Animazione e transizioni per gli elementi del form */
+
 .form-group {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Effetto di "shake" per input vuoti */
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -228,20 +223,20 @@ button:active {
     animation: shake 0.5s ease-in-out;
 }
 
-/* Animazione per il pulsante di submit durante l'invio */
+
 button.sending {
-    background-color: #ffaa00; /* Colore giallo durante l'invio */
+    background-color: #ffaa00;
     cursor: wait;
 }
 
 button.sent {
-    background-color: #28a745; /* Colore verde per il successo */
+    background-color: #28a745;
     cursor: not-allowed;
 }
 
-/* Disabilita il pulsante di submit */
 button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
 }
+
 </style>
