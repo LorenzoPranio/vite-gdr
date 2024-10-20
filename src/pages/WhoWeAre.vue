@@ -92,7 +92,6 @@ export default {
 /* Stile per l'intestazione */
 h1 {
     color: #00aaff; /* Colore blu */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 700;
     text-transform: uppercase; /* Testo maiuscolo */
     font-size: 2.5rem; /* Dimensione del font più grande */
@@ -100,7 +99,6 @@ h1 {
 
 h2 {
     color: #ffffff; /* Colore bianco per il sottotitolo */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     font-size: 2rem; /* Dimensione del font */
 }

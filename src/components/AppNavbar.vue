@@ -148,9 +148,6 @@ nav {
       text-transform: uppercase;
       letter-spacing: 1.7px;
       
-      &:before {
-        
-      }
     }
   }
 }

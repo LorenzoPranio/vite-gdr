@@ -143,7 +143,6 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #222; /* Un nero più morbido */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 700;
 }
 

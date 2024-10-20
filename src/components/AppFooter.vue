@@ -74,7 +74,6 @@
   .footer-header h2 {
     font-size: 1.2rem;
     margin: 0;
-    font-family: "Lato", sans-serif;
   }
   
   .toggle_icon {
@@ -105,7 +104,6 @@
   .footer-content {
     margin-top: 20px;
     font-size: 1rem;
-    font-family: "Lato", sans-serif;
     opacity: 0;
     animation: fadeIn 0.6s forwards;
   }
