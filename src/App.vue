@@ -1,17 +1,20 @@
-<script setup>
-import Characters from './pages/Characters.vue';
-import AppNavbar from './components/AppNavbar.vue';
-import AppFooter from './components/AppFooter.vue';
+<script>
+import AppNavbar from "./components/AppNavbar.vue";
+import AppFooter from "./components/AppFooter.vue";
+
+export default {
+	name: "App",
+	components: {
+		AppNavbar,
+		AppFooter,
+	},
+};
 </script>
 
 <template>
-
-  <AppNavbar />
-  <Characters />
-  <AppFooter />
-  
+	<AppNavbar />
+	<router-view></router-view>
+	<AppFooter />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

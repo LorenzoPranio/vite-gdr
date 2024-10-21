@@ -1,110 +1,116 @@
 <script>
-import axios from "axios"
-import { store } from "../store"
+import axios from "axios";
+import { store } from "../store";
 
 export default {
-    data() {
-        return {
-            store,
-        }
-    },
-    mounted() {
-        this.getCharacters()
-        const track = document.getElementById("image-track")
+	data() {
+		return {
+			store,
+		};
+	},
+	mounted() {
+		this.getCharacters();
+		const track = document.getElementById("image-track");
 
-        const handleOnDown = (e) => (track.dataset.mouseDownAt = e.clientX)
+		const handleOnDown = (e) => (track.dataset.mouseDownAt = e.clientX);
 
-        const handleOnUp = () => {
-            track.dataset.mouseDownAt = "0"
-            track.dataset.prevPercentage = track.dataset.percentage
-        }
+		const handleOnUp = () => {
+			track.dataset.mouseDownAt = "0";
+			track.dataset.prevPercentage = track.dataset.percentage;
+		};
 
-        const handleOnMove = (e) => {
-            if (track.dataset.mouseDownAt === "0") return
+		const handleOnMove = (e) => {
+			if (track.dataset.mouseDownAt === "0") return;
 
-            const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-                maxDelta = window.innerWidth / 2
+			const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+				maxDelta = window.innerWidth / 2;
 
-            const percentage = (mouseDelta / maxDelta) * -100,
-                nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-                nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100)
+			const percentage = (mouseDelta / maxDelta) * -100,
+				nextPercentageUnconstrained =
+					parseFloat(track.dataset.prevPercentage) + percentage,
+				nextPercentage = Math.max(
+					Math.min(nextPercentageUnconstrained, 0),
+					-100
+				);
 
-            track.dataset.percentage = nextPercentage
+			track.dataset.percentage = nextPercentage;
 
-            track.animate(
-                {
-                    transform: `translate(${nextPercentage}%, -50%)`,
-                },
-                { duration: 1200, fill: "forwards" }
-            )
+			track.animate(
+				{
+					transform: `translate(${nextPercentage}%, -50%)`,
+				},
+				{ duration: 1200, fill: "forwards" }
+			);
 
-            for (const image of track.getElementsByClassName("image")) {
-                image.animate(
-                    {
-                        objectPosition: `${100 + nextPercentage}% center`,
-                    },
-                    { duration: 1200, fill: "forwards" }
-                )
-            }
-        }
+			for (const image of track.getElementsByClassName("image")) {
+				image.animate(
+					{
+						objectPosition: `${100 + nextPercentage}% center`,
+					},
+					{ duration: 1200, fill: "forwards" }
+				);
+			}
+		};
 
-        window.onmousedown = (e) => handleOnDown(e)
+		window.onmousedown = (e) => handleOnDown(e);
 
-        window.ontouchstart = (e) => handleOnDown(e.touches[0])
+		window.ontouchstart = (e) => handleOnDown(e.touches[0]);
 
-        window.onmouseup = (e) => handleOnUp(e)
+		window.onmouseup = (e) => handleOnUp(e);
 
-        window.ontouchend = (e) => handleOnUp(e.touches[0])
+		window.ontouchend = (e) => handleOnUp(e.touches[0]);
 
-        window.onmousemove = (e) => handleOnMove(e)
+		window.onmousemove = (e) => handleOnMove(e);
 
-        window.ontouchmove = (e) => handleOnMove(e.touches[0])
-    },
-    methods: {
-        getCharacters() {
-            axios.get("http://127.0.0.1:8000/api/characters").then((response) => {
-                store.characters = response.data.results
-            })
-        },
-    },
-}
+		window.ontouchmove = (e) => handleOnMove(e.touches[0]);
+	},
+	methods: {
+		getCharacters() {
+			axios.get("http://127.0.0.1:8000/api/characters").then((response) => {
+				store.characters = response.data.results;
+			});
+		},
+	},
+};
 </script>
 <template>
-    <div class="body-characters">
-        <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-            <img
-                v-for="(character, index) in store.characters"
-                :src="`/img/character_images/${character.name}.webp`"
-                :alt="character.name"
-                class="image"
-                draggable="false" />
-        </div>
-    </div>
+	<div class="body-characters">
+		<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+			<img
+				v-for="(character, index) in store.characters"
+				:key="index"
+				:src="`/img/character_images/${character.name}.webp`"
+				:alt="character.name"
+				class="image"
+				draggable="false" />
+		</div>
+	</div>
 </template>
 <style lang="scss">
 .body-characters {
-    height: 100vh;
-    width: 100vw;
-    background-color: black;
-    margin: 0rem;
-    overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	margin: 0rem;
+	overflow-x: hidden;
+	position: relative;
 }
 
 #image-track {
-    display: flex;
-    gap: 4vmin;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(0%, -50%);
-    user-select: none;
+	display: flex;
+	gap: 4vmin;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(0%, -50%);
+	user-select: none;
 }
 
 #image-track > .image {
-    width: 20vmin;
-    height: 28vmin;
-    object-fit: cover;
-    object-position: 100% center;
-    border-radius: 15px;
+	width: 28vmin;
+	height: 38vmin;
+	object-fit: cover;
+	object-position: 100% center;
+	border-radius: 15px;
 }
 </style>

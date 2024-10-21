@@ -1,210 +1,231 @@
 <script>
 export default {
-    mounted() {
-    var icon = document.getElementById("icon");
-    var icon1 = document.getElementById("a");
-    var icon2 = document.getElementById("b");
-    var icon3 = document.getElementById("c");
-    var nav = document.getElementById('nav');
-    var blue = document.getElementById("blue");
+	mounted() {
+		var icon = document.getElementById("icon");
+		var icon1 = document.getElementById("a");
+		var icon2 = document.getElementById("b");
+		var icon3 = document.getElementById("c");
+		var nav = document.getElementById("nav");
+		var blue = document.getElementById("blue");
 
-    icon.addEventListener('click', function() {
-      icon1.classList.toggle('a');
-      icon2.classList.toggle('c');
-      icon3.classList.toggle('b');
-      nav.classList.toggle('show');
-      blue.classList.toggle('slide');
-    });
-  },
-}
+		icon.addEventListener("click", function () {
+			icon1.classList.toggle("a");
+			icon2.classList.toggle("c");
+			icon3.classList.toggle("b");
+			nav.classList.toggle("show");
+			blue.classList.toggle("slide");
+		});
+	},
+};
 </script>
 <template>
-  <header>
-    <div class="hamburger-icon" id="icon">
-      <div class="icon-1" id="a"></div>
-      <div class="icon-2" id="b"></div>
-      <div class="icon-3" id="c"></div>
-      <div class="clear"></div>
-    </div>
-    <nav id="nav">
-      <ul>
-        <li>HOme</li>
-        <li>About</li>
-        <li>Contact</li>
-        <li>Help</li>
-      </ul>
-    </nav>
-    <div class="dark-blue" id="blue"></div>
-  </header>
+	<header>
+		<div class="hamburger-icon" id="icon">
+			<div class="icon-1" id="a"></div>
+			<div class="icon-2" id="b"></div>
+			<div class="icon-3" id="c"></div>
+			<div class="clear"></div>
+		</div>
+		<nav id="nav">
+			<ul>
+				<li>
+					<router-link class="text-light text-decoration-none" to="/"
+						>Home</router-link
+					>
+				</li>
+				<li>
+					<router-link class="text-light text-decoration-none" to="/characters"
+						>Personaggi</router-link
+					>
+				</li>
+				<li>
+					<router-link class="text-light text-decoration-none" to="/items"
+						>Oggetti</router-link
+					>
+				</li>
+				<li>
+					<router-link class="text-light text-decoration-none" to="/who-we-are"
+						>Chi siamo</router-link
+					>
+				</li>
+			</ul>
+		</nav>
+		<div class="dark-blue" id="blue"></div>
+	</header>
 </template>
 <style lang="scss">
-    header {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  overflow: auto;
+header {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	overflow: auto;
 }
 
-.icon-1, .icon-2, .icon-3 {
-    position: absolute;
-    left: 25%;
-    top: 50%;
-    width: 32px;
-    height: 3px;
-    background-color: black;
-    transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
+.icon-1,
+.icon-2,
+.icon-3 {
+	position: absolute;
+	left: 25%;
+	top: 50%;
+	width: 32px;
+	height: 3px;
+	background-color: black;
+	transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
 }
 
 .icon-1 {
-  transform: translateY(-8px);
-  animation-delay: 100ms;
+	transform: translateY(-8px);
+	animation-delay: 100ms;
 }
 
 .icon-3 {
-  transform: translateY(8px);
-  animation-delay: 250ms;
+	transform: translateY(8px);
+	animation-delay: 250ms;
 }
 
 .hamburger-icon {
-  position: absolute;
-  height: 60px;
-  width: 60px;
-  top: 10%;
-  left: 3%;
-  z-index: 1000;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.2s ease-in-out;
-  background: rgba(255,255,255,0.2);
-  // background: green;
-  // width: auto;
-  // height: 50px;
-  // overflow: hidden;
-  &:hover {
-    // .icon-1 {
-    //   transform: rotate(40deg);
-    // }
-    // .icon-3 {
-    //   transform: rotate(-40deg);
-    // }
-    // .icon-2 {
-    //   opacity: 0;
-    // }
-    transform: scale(1.2);
-    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
-  }
+	position: absolute;
+	height: 60px;
+	width: 60px;
+	top: 10%;
+	left: 3%;
+	z-index: 1000;
+	cursor: pointer;
+	border-radius: 50%;
+	transition: all 0.2s ease-in-out;
+	background: rgba(255, 255, 255, 0.2);
+	// background: green;
+	// width: auto;
+	// height: 50px;
+	// overflow: hidden;
+	&:hover {
+		// .icon-1 {
+		//   transform: rotate(40deg);
+		// }
+		// .icon-3 {
+		//   transform: rotate(-40deg);
+		// }
+		// .icon-2 {
+		//   opacity: 0;
+		// }
+		transform: scale(1.2);
+		box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+	}
 }
 
 .icon-1.a {
-  transform: rotate(40deg);
+	transform: rotate(40deg);
 }
 .icon-3.b {
-  transform: rotate(-40deg);
+	transform: rotate(-40deg);
 }
 .icon-2.c {
-  opacity: 0;
+	opacity: 0;
 }
 
 .clear {
-  clear: both;
+	clear: both;
 }
 
 @keyframes slideIn {
-  0% {
-    width: 0%;
-    // transform: scale(.3);
-    opacity: 0;
-  }
-  
-  100% {
-    width: 50%;
-    // transform:scale(1);
-    opacity: 1;
-  }
+	0% {
+		width: 0%;
+		// transform: scale(.3);
+		opacity: 0;
+	}
+
+	100% {
+		width: 50%;
+		// transform:scale(1);
+		opacity: 1;
+	}
 }
 
 nav {
-  background: #0288D1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0%;
-  z-index: 10;
-  opacity: 0;
- 
-    transition: all 600ms cubic-bezier(.62,.04,.3,1.56);
-   transition-delay: 100ms;
-  ul {
-    margin: 0;
-    position: absolute;
-    top: 30%;
-    left: 40%;
-    li {
-      list-style: none;
-      font-size: 24px;
-      color: #fff;
-      line-height: 2.2;
-      text-transform: uppercase;
-      letter-spacing: 1.7px;
-      
-    }
-  }
+	background: #0288d1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0%;
+	z-index: 10;
+	opacity: 0;
+
+	transition: all 600ms cubic-bezier(0.62, 0.04, 0.3, 1.56);
+	transition-delay: 100ms;
+	ul {
+		margin: 0;
+		position: absolute;
+		top: 30%;
+		left: 40%;
+		li {
+			list-style: none;
+			font-size: 24px;
+			color: #fff;
+			line-height: 2.2;
+			text-transform: uppercase;
+			letter-spacing: 1.7px;
+		}
+	}
 }
 
- nav.show {
-  //  opacity: 0;
-  // animation: slideIn 0.6s cubic-bezier(.62,.04,.3,1.56);
-  // animation-fill-mode: forwards;
-   width: 50%;
-    // transform:scale(1);
-   opacity: 1;
+nav.show {
+	//  opacity: 0;
+	// animation: slideIn 0.6s cubic-bezier(.62,.04,.3,1.56);
+	// animation-fill-mode: forwards;
+	width: 50%;
+	// transform:scale(1);
+	opacity: 1;
 }
-
 
 .dark-blue {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #64B5F6;
-  height: 100%;
-  width: 0%;
-  transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
-  transition-delay: 50ms;
-  z-index: 5;
-  opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #64b5f6;
+	height: 100%;
+	width: 0%;
+	transition: all 500ms cubic-bezier(0.62, 0.04, 0.3, 1.8);
+	transition-delay: 50ms;
+	z-index: 5;
+	opacity: 1;
 }
 
 .dark-blue.slide {
-  width: 50%;
-  opacity: 1;
+	width: 50%;
+	opacity: 1;
 }
 
 @keyframes shotup {
-  0% {
-    transform: translateY(300%) ;
-    opacity: 0;
-  }
-  90% {
-    transform: translateY(-50px);
-  }
-  100% {
-    transform: translateY(0%) ;
-    opacity: 1;
-  }
+	0% {
+		transform: translateY(300%);
+		opacity: 0;
+	}
+	90% {
+		transform: translateY(-50px);
+	}
+	100% {
+		transform: translateY(0%);
+		opacity: 1;
+	}
 }
 
 .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  h1 {
-    font-size: 70px;
-     animation: shotup 600ms ease-in-out;
-    animation-delay: 300ms;
-  }
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	h1 {
+		font-size: 70px;
+		animation: shotup 600ms ease-in-out;
+		animation-delay: 300ms;
+	}
+}
+
+router-link {
+	text-decoration: none;
+	color: white;
 }
 </style>
