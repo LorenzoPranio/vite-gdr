@@ -54,14 +54,21 @@
                     <button class="btn bg-success text-white" @click="startGame">Start Game</button>
                 </div>
             </div>
+            <Battle
+                :character1="store.characters[currentIndex]"
+                :character2="store.characters[randomCharacters]" />
         </div>
     </div>
 </template>
 
 <script>
 import { store } from "../store"
+import Battle from "./Battle.vue"
 
 export default {
+    components: {
+        Battle,
+    },
     data() {
         return {
             store,
@@ -118,7 +125,7 @@ export default {
 .next {
     position: absolute;
     bottom: 50%;
-    transform: translateY(50%);
+    transform: translate(0%, 50%);
 }
 
 .prev {
