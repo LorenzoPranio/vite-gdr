@@ -29,30 +29,23 @@ export default {
 		<nav id="nav">
 			<ul>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/"
-						>Home</router-link
-					>
+					<router-link class="text-light text-decoration-none" to="/">Home</router-link>
 				</li>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/characters"
-						>Personaggi</router-link
-					>
+					<router-link class="text-light text-decoration-none" to="/characters">Personaggi</router-link>
 				</li>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/items"
-						>Oggetti</router-link
-					>
+					<router-link class="text-light text-decoration-none" to="/items">Oggetti</router-link>
 				</li>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/who-we-are"
-						>Chi siamo</router-link
-					>
+					<router-link class="text-light text-decoration-none" to="/who-we-are">Chi siamo</router-link>
 				</li>
 			</ul>
 		</nav>
-		<div class="dark-blue" id="blue"></div>
+		<div class="dark-overlay" id="blue"></div>
 	</header>
 </template>
+
 <style lang="scss">
 header {
 	width: 50%;
@@ -69,7 +62,7 @@ header {
 	top: 50%;
 	width: 32px;
 	height: 3px;
-	background-color: black;
+	background-color: #D4AF37; /* Oro per gli hamburger icon */
 	transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
 }
 
@@ -93,21 +86,8 @@ header {
 	cursor: pointer;
 	border-radius: 50%;
 	transition: all 0.2s ease-in-out;
-	background: rgba(255, 255, 255, 0.2);
-	// background: green;
-	// width: auto;
-	// height: 50px;
-	// overflow: hidden;
+	background: rgba(71, 58, 47, 0.6); /* Rosso Borgogna per un tocco di medievale */
 	&:hover {
-		// .icon-1 {
-		//   transform: rotate(40deg);
-		// }
-		// .icon-3 {
-		//   transform: rotate(-40deg);
-		// }
-		// .icon-2 {
-		//   opacity: 0;
-		// }
 		transform: scale(1.2);
 		box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 	}
@@ -127,22 +107,8 @@ header {
 	clear: both;
 }
 
-@keyframes slideIn {
-	0% {
-		width: 0%;
-		// transform: scale(.3);
-		opacity: 0;
-	}
-
-	100% {
-		width: 50%;
-		// transform:scale(1);
-		opacity: 1;
-	}
-}
-
 nav {
-	background: #0288d1;
+	background: #2F4F2F; /* Marrone scuro per lo sfondo */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -150,7 +116,6 @@ nav {
 	width: 0%;
 	z-index: 10;
 	opacity: 0;
-
 	transition: all 600ms cubic-bezier(0.62, 0.04, 0.3, 1.56);
 	transition-delay: 100ms;
 	ul {
@@ -161,7 +126,7 @@ nav {
 		li {
 			list-style: none;
 			font-size: 24px;
-			color: #fff;
+			color: #D4AF37; /* Oro per i link */
 			line-height: 2.2;
 			text-transform: uppercase;
 			letter-spacing: 1.7px;
@@ -170,19 +135,15 @@ nav {
 }
 
 nav.show {
-	//  opacity: 0;
-	// animation: slideIn 0.6s cubic-bezier(.62,.04,.3,1.56);
-	// animation-fill-mode: forwards;
 	width: 50%;
-	// transform:scale(1);
 	opacity: 1;
 }
 
-.dark-blue {
+.dark-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #64b5f6;
+	background: #3B2F2F; /* Verde foresta per un'atmosfera naturale */
 	height: 100%;
 	width: 0%;
 	transition: all 500ms cubic-bezier(0.62, 0.04, 0.3, 1.8);
@@ -191,41 +152,8 @@ nav.show {
 	opacity: 1;
 }
 
-.dark-blue.slide {
+.dark-overlay.slide {
 	width: 50%;
 	opacity: 1;
-}
-
-@keyframes shotup {
-	0% {
-		transform: translateY(300%);
-		opacity: 0;
-	}
-	90% {
-		transform: translateY(-50px);
-	}
-	100% {
-		transform: translateY(0%);
-		opacity: 1;
-	}
-}
-
-.content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 100%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	h1 {
-		font-size: 70px;
-		animation: shotup 600ms ease-in-out;
-		animation-delay: 300ms;
-	}
-}
-
-router-link {
-	text-decoration: none;
-	color: white;
 }
 </style>
