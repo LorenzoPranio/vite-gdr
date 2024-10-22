@@ -1,78 +1,43 @@
 <script>
-import wallpaper_01 from '../assets/wallpaper_01.png';
-import wallpaper_02 from '../assets/wallpaper_02.png';
-import wallpaper_03 from '../assets/wallpaper_03.png';
-import wallpaper_04 from '../assets/wallpaper_04.png';
-import wallpaper_05 from '../assets/wallpaper_05.png';
-import wallpaper_06 from '../assets/wallpaper_06.png';
-import wallpaper_07 from '../assets/wallpaper_07.png';
-import wallpaper_08 from '../assets/wallpaper_08.png';
-import wallpaper_09 from '../assets/wallpaper_09.png';
-import wallpaper_10 from '../assets/wallpaper_10.png';
+import Home from '../assets/Home.png';
+import Dungeon from '../assets/Dungeon.png';
+import I_Personaggi from '../assets/I-Personaggi.webp';
+import Gli_Oggetti from '../assets/Gli-Oggetti.webp';
+import Chi_Siamo from '../assets/Chi-Siamo.webp';
 
 export default {
   data() {
     return {
       items: [
         {
-          name: 'Home',
+          name: 'Chi Siamo?',
           description:
-            "Da oggi, questa sarà la tua dimora. Incontra nuovi amici, stringi alleanze e parti all'avventura!",
-          image: wallpaper_02,
+            "Siamo un team di appassionati di giochi di ruolo, uniti dalla passione per le avventure immersive e le storie avvincenti. Creiamo mondi dove la tua immaginazione è l'unico limite. Unisciti a noi e vivi l'esperienza definitiva del GDR.",
+          image: Chi_Siamo,
         },
         {
           name: 'Home',
           description:
             "Da oggi, questa sarà la tua dimora. Incontra nuovi amici, stringi alleanze e parti all'avventura!",
-          image: wallpaper_02,
+          image: Home,
         },
         {
-          name: 'Ancient Dungeon',
+          name: 'I Personaggi',
           description:
-            'A dark and eerie dungeon with stone walls covered in moss and runes...',
-          image: wallpaper_03,
+            "Scegli il tuo destino: eroi coraggiosi, ladri astuti o maghi potenti. Personalizza ogni dettaglio, dalle abilità alle alleanze, e vivi un'avventura unica. Il tuo personaggio, la tua storia.",
+          image: I_Personaggi,
         },
         {
-          name: 'Enchanted Forest',
+          name: 'Gli Oggetti',
           description:
-            'A mysterious forest with ancient, twisted trees covered in glowing runes...',
-          image: wallpaper_04,
+            'Scopri un vasto arsenale di armi potenti e oggetti rari. Potenzia il tuo equipaggiamento, trova artefatti leggendari e sblocca abilità segrete. Ogni oggetto può fare la differenza tra la vittoria e la sconfitta.',
+          image: Gli_Oggetti,
         },
         {
-          name: "Dragon's Cave",
+          name: "Inizia la tua avventura!",
           description:
-            'A massive, dimly lit cave filled with piles of glittering treasure...',
-          image: wallpaper_05,
-        },
-        {
-          name: 'Majestic Castle',
-          description:
-            'A towering medieval castle built atop a high cliff...',
-          image: wallpaper_06,
-        },
-        {
-          name: 'Epic Battle Scene',
-          description:
-            'A medieval fantasy battlefield at sunset...',
-          image: wallpaper_07,
-        },
-        {
-          name: 'Mythical City',
-          description:
-            'A sprawling medieval city built on floating islands...',
-          image: wallpaper_08,
-        },
-        {
-          name: "Dark Sorcerer's Lair",
-          description:
-            'A dark and menacing underground cavern filled with skulls...',
-          image: wallpaper_09,
-        },
-        {
-          name: 'Battle Against the Undead',
-          description:
-            'A dark and foggy battlefield where an army of undead skeletons...',
-          image: wallpaper_10,
+            'Entra in un mondo di avventure senza limiti, dove le tue scelte plasmano il destino. Crea il tuo eroe, esplora terre misteriose e affronta sfide epiche. Sei pronto a scrivere la tua leggenda?',
+          image: Dungeon,
         },
       ],
     };
@@ -107,7 +72,7 @@ export default {
           <div class="content-custom">
             <div class="name">{{ item.name }}</div>
             <div class="des">{{ item.description }}</div>
-            <button>Esplora</button>
+            <button class="btn-custom">Esplora</button>
           </div>
         </div>
       </div>
@@ -179,7 +144,7 @@ export default {
     position: relative;
     top: 50%;
     left: 100px;
-    width: 300px;
+    width: 400px;
     text-align: left;
     color: #eee;
     transform: translate(0, -50%);
@@ -192,15 +157,16 @@ export default {
 }
 
 .content-custom .name {
-    font-size: 80px;
+    font-size: 55px;
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0;
     animation: animate 1s ease-in-out 0.1s 1 forwards; 
+    color: #d4af37;
 }
 
 .content-custom .des {
-  font-size: 30px;
+  font-size: 25px;
     margin-top: 10px;
     margin-bottom: 20px;
     opacity: 0;
@@ -245,15 +211,47 @@ export default {
     margin: 0 50px;
     border: 1px solid #000;
     transition: 0.3s;
+    background: linear-gradient(
+		45deg,
+		#000000,
+		#2f4f2f
+	);
 }
 
 .button button:hover {
-    background: #ababab;
-    color: #fff;
+  background: linear-gradient(
+		45deg,
+		#141414,
+		#75af75
+	);
+  scale: (1.15);
 }
+
 
 .btn-svg{
     width: 65%;
     margin-bottom: 5px;
+}
+
+.btn-custom{
+  background: linear-gradient(
+		45deg,
+		#000000,
+		#2f4f2f
+	);
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bolder;
+  color : #d4af37;
+  
+  &:hover{
+    background: linear-gradient(
+		45deg,
+		#141414,
+		#75af75
+	);
+  scale: (1.15);
+  }
 }
 </style>
