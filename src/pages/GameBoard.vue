@@ -67,6 +67,7 @@ export default {
             store,
             currentIndex: 0,
             randomCharacters: 3,
+            intervalId: null,
         }
     },
     methods: {
@@ -86,9 +87,23 @@ export default {
         },
         startGame() {
             const randomNumber = Math.floor(Math.random() * store.characters.length)
-            if (randomNumber !== this.currentIndex) {
-                this.randomCharacters = randomNumber
-            }
+            this.scrollCharacters(randomNumber)
+        },
+        scrollCharacters(targetIndex) {
+            // Imposta un intervallo che cambia l'indice randomCharacters
+            this.intervalId = setInterval(() => {
+                if (this.randomCharacters < this.store.characters.length - 1) {
+                    this.randomCharacters++
+                } else {
+                    this.randomCharacters = 0 // Torna al primo personaggio
+                }
+
+                // Se l'indice attuale è uguale a quello random selezionato, ferma lo scorrimento
+                if (this.randomCharacters === targetIndex) {
+                    clearInterval(this.intervalId) // Ferma lo scorrimento
+                    this.intervalId = null // Reset dell'intervallo
+                }
+            }, 100) // Cambia i character ogni 100ms per dare l'effetto di scorrimento veloce
         },
     },
 }
