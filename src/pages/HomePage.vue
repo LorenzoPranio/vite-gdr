@@ -229,8 +229,8 @@ export default {
 
 
 .btn-svg{
-    width: 65%;
-    margin-bottom: 5px;
+    width: 50%;
+    filter: invert(57%) sepia(78%) saturate(400%) hue-rotate(1deg) brightness(105%) contrast(99%);
 }
 
 .btn-custom{
