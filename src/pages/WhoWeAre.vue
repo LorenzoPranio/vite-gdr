@@ -21,6 +21,7 @@ export default {
 <template>
 	<div class="bg-who">
 		<div class="team">
+			<h1 class="text-center fw-bold">Il Team</h1>
 			<div class="box">
 				<div class="card text-center" style="--i: 1">
 					<div class="card-front">
@@ -98,7 +99,7 @@ export default {
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bg-who {
 	background-image: url(../assets/wall_backgroung.webp);
 	background-size: cover;
@@ -161,5 +162,11 @@ export default {
 .card-back {
 	background: linear-gradient(135deg, #000000, #2f4f2f);
 	transform: rotateY(180deg);
+}
+h1 {
+	text-align: center;
+	color: #d4af37;
+	font-weight: 700;
+	font-size: 75px;
 }
 </style>

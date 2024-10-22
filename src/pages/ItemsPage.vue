@@ -79,6 +79,7 @@ export default {
 <template>
 	<div class="bg-items">
 		<div class="body-items">
+			<h1 class="text-center fw-bold">Oggetti</h1>
 			<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
 				<div
 					v-for="(item, index) in store.items"
@@ -101,7 +102,7 @@ export default {
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" sscoped>
 .bg-items {
 	background-image: url(../assets/wall_backgroung.webp);
 	background-size: cover;
@@ -165,5 +166,13 @@ export default {
 
 .image-container:hover .overlay {
 	opacity: 1;
+}
+h1 {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #d4af37;
+	font-weight: 700;
+	padding-top: 100px;
+	font-size: 75px;
 }
 </style>
