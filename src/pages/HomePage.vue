@@ -1,133 +1,136 @@
 <script>
-import wallpaper_01 from '../assets/wallpaper_01.png';
-import wallpaper_02 from '../assets/wallpaper_02.png';
-import wallpaper_03 from '../assets/wallpaper_03.png';
-import wallpaper_04 from '../assets/wallpaper_04.png';
-import wallpaper_05 from '../assets/wallpaper_05.png';
-import wallpaper_06 from '../assets/wallpaper_06.png';
-import wallpaper_07 from '../assets/wallpaper_07.png';
-import wallpaper_08 from '../assets/wallpaper_08.png';
-import wallpaper_09 from '../assets/wallpaper_09.png';
-import wallpaper_10 from '../assets/wallpaper_10.png';
+import wallpaper_01 from "../assets/wallpaper_01.png"
+import wallpaper_02 from "../assets/wallpaper_02.png"
+import wallpaper_03 from "../assets/wallpaper_03.png"
+import wallpaper_04 from "../assets/wallpaper_04.png"
+import wallpaper_05 from "../assets/wallpaper_05.png"
+import wallpaper_06 from "../assets/wallpaper_06.png"
+import wallpaper_07 from "../assets/wallpaper_07.png"
+import wallpaper_08 from "../assets/wallpaper_08.png"
+import wallpaper_09 from "../assets/wallpaper_09.png"
+import wallpaper_10 from "../assets/wallpaper_10.png"
 
 export default {
-  data() {
-    return {
-      items: [
-        {
-          name: 'Sky Fortress',
-          description:
-            'A magical flying fortress drifting above the clouds...',
-          image: wallpaper_01,
-        },
-        {
-          name: 'Elven Sanctuary',
-          description:
-            'A serene elven village hidden deep in an ancient forest...',
-          image: wallpaper_02,
-        },
-        {
-          name: 'Ancient Dungeon',
-          description:
-            'A dark and eerie dungeon with stone walls covered in moss and runes...',
-          image: wallpaper_03,
-        },
-        {
-          name: 'Enchanted Forest',
-          description:
-            'A mysterious forest with ancient, twisted trees covered in glowing runes...',
-          image: wallpaper_04,
-        },
-        {
-          name: "Dragon's Cave",
-          description:
-            'A massive, dimly lit cave filled with piles of glittering treasure...',
-          image: wallpaper_05,
-        },
-        {
-          name: 'Majestic Castle',
-          description:
-            'A towering medieval castle built atop a high cliff...',
-          image: wallpaper_06,
-        },
-        {
-          name: 'Epic Battle Scene',
-          description:
-            'A medieval fantasy battlefield at sunset...',
-          image: wallpaper_07,
-        },
-        {
-          name: 'Mythical City',
-          description:
-            'A sprawling medieval city built on floating islands...',
-          image: wallpaper_08,
-        },
-        {
-          name: "Dark Sorcerer's Lair",
-          description:
-            'A dark and menacing underground cavern filled with skulls...',
-          image: wallpaper_09,
-        },
-        {
-          name: 'Battle Against the Undead',
-          description:
-            'A dark and foggy battlefield where an army of undead skeletons...',
-          image: wallpaper_10,
-        },
-      ],
-    };
-  },
-  mounted() {
-    const $next = this.$el.querySelector('.next');
-    const $prev = this.$el.querySelector('.prev');
+    data() {
+        return {
+            items: [
+                {
+                    name: "Sky Fortress",
+                    description: "A magical flying fortress drifting above the clouds...",
+                    image: wallpaper_01,
+                    url: "",
+                },
+                {
+                    name: "Elven Sanctuary",
+                    description: "A serene elven village hidden deep in an ancient forest...",
+                    image: wallpaper_02,
+                    url: "",
+                },
+                {
+                    name: "Ancient Dungeon",
+                    description:
+                        "A dark and eerie dungeon with stone walls covered in moss and runes...",
+                    image: wallpaper_03,
+                    url: "",
+                },
+                {
+                    name: "Enchanted Forest",
+                    description:
+                        "A mysterious forest with ancient, twisted trees covered in glowing runes...",
+                    image: wallpaper_04,
+                    url: "",
+                },
+                {
+                    name: "Dragon's Cave",
+                    description:
+                        "A massive, dimly lit cave filled with piles of glittering treasure...",
+                    image: wallpaper_05,
+                    url: "",
+                },
+                {
+                    name: "Majestic Castle",
+                    description: "A towering medieval castle built atop a high cliff...",
+                    image: wallpaper_06,
+                    url: "",
+                },
+                {
+                    name: "Epic Battle Scene",
+                    description: "A medieval fantasy battlefield at sunset...",
+                    image: wallpaper_07,
+                    url: "",
+                },
+                {
+                    name: "Mythical City",
+                    description: "A sprawling medieval city built on floating islands...",
+                    image: wallpaper_08,
+                    url: "",
+                },
+                {
+                    name: "Dark Sorcerer's Lair",
+                    description: "A dark and menacing underground cavern filled with skulls...",
+                    image: wallpaper_09,
+                    url: "",
+                },
+                {
+                    name: "Battle Against the Undead",
+                    description:
+                        "A dark and foggy battlefield where an army of undead skeletons...",
+                    image: wallpaper_10,
+                    url: "",
+                },
+            ],
+        }
+    },
+    mounted() {
+        const $next = this.$el.querySelector(".next")
+        const $prev = this.$el.querySelector(".prev")
 
-    $next.addEventListener('click', this.nextSlide);
-    $prev.addEventListener('click', this.prevSlide);
-  },
-  methods: {
-    nextSlide() {
-      const items = this.$el.querySelectorAll('.item');
-      this.$el.querySelector('.slide').appendChild(items[0]);
+        $next.addEventListener("click", this.nextSlide)
+        $prev.addEventListener("click", this.prevSlide)
     },
-    prevSlide() {
-      const items = this.$el.querySelectorAll('.item');
-      this.$el.querySelector('.slide').prepend(items[items.length - 1]);
+    methods: {
+        nextSlide() {
+            const items = this.$el.querySelectorAll(".item")
+            this.$el.querySelector(".slide").appendChild(items[0])
+        },
+        prevSlide() {
+            const items = this.$el.querySelectorAll(".item")
+            this.$el.querySelector(".slide").prepend(items[items.length - 1])
+        },
     },
-  },
-};
+}
 </script>
 <template>
-    <div class="container">
-      <div class="slide">
-        <div
-          class="item"
-          v-for="(item, index) in items"
-          :key="index"
-          :style="{ backgroundImage: `url(${item.image})`}">
-          <div class="content">
-            <div class="name">{{ item.name }}</div>
-            <div class="des">{{ item.description }}</div>
-            <button>Show More</button>
-          </div>
+    <div class="container-fluid">
+        <div class="slide">
+            <div
+                class="item"
+                v-for="(item, index) in items"
+                :key="index"
+                :style="{ backgroundImage: `url(${item.image})` }">
+                <div class="content">
+                    <div class="name">{{ item.name }}</div>
+                    <div class="des">{{ item.description }}</div>
+                    <button>Show More</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="button">
-        <button class="prev"><img  class="btn-svg" src="../assets/Bow-Arrow-SX.svg"></button>
-        <button class="next"><img class="btn-svg" src="../assets/Bow-Arrow-RX.svg"></button>
-      </div>
+        <div class="button">
+            <button class="prev"><img class="btn-svg" src="../assets/Bow-Arrow-SX.svg" /></button>
+            <button class="next"><img class="btn-svg" src="../assets/Bow-Arrow-RX.svg" /></button>
+        </div>
     </div>
 </template>
 <style lang="scss">
-.container {
+.container-fluid {
     position: relative;
-    width: 800px;
-    height: 480px;
+    width: 100%;
+    height: 100vh;
     background: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
-    margin-top: 50px;
 }
 
-.container .slide .item {
+.container-fluid .slide .item {
     width: 165px;
     height: 250px;
     position: absolute;
@@ -199,7 +202,7 @@ export default {
     border: none;
     cursor: pointer;
     opacity: 0;
-    animation: animate 1s  ease-in-out 0.6s 1 forwards;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
 @keyframes animate {
@@ -220,12 +223,12 @@ export default {
     width: 100%;
     text-align: center;
     position: absolute;
-    bottom: 20px;
+    bottom: 70px;
 }
 
 .button button {
-    width: 40px;
-    height: 35px;
+    width: 60px;
+    height: 55px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
@@ -239,7 +242,7 @@ export default {
     color: #fff;
 }
 
-.btn-svg{
+.btn-svg {
     width: 65%;
     margin-bottom: 3px;
 }
