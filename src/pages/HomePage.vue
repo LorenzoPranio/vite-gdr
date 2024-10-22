@@ -15,15 +15,15 @@ export default {
     return {
       items: [
         {
-          name: 'Sky Fortress',
+          name: 'Home',
           description:
-            'A magical flying fortress drifting above the clouds...',
-          image: wallpaper_01,
+            "Da oggi, questa sarà la tua dimora. Incontra nuovi amici, stringi alleanze e parti all'avventura!",
+          image: wallpaper_02,
         },
         {
-          name: 'Elven Sanctuary',
+          name: 'Home',
           description:
-            'A serene elven village hidden deep in an ancient forest...',
+            "Da oggi, questa sarà la tua dimora. Incontra nuovi amici, stringi alleanze e parti all'avventura!",
           image: wallpaper_02,
         },
         {
@@ -104,7 +104,7 @@ export default {
           v-for="(item, index) in items"
           :key="index"
           :style="{ backgroundImage: `url(${item.image})`}">
-          <div class="content">
+          <div class="content-custom">
             <div class="name">{{ item.name }}</div>
             <div class="des">{{ item.description }}</div>
             <button>Esplora</button>
@@ -117,12 +117,13 @@ export default {
       </div>
     </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .container-custom {
     position: relative;
     width: 100vw;
     height: 100vh;
     background: #f5f5f5;
+    
 }
 
 .container-custom .slide .item {
@@ -137,6 +138,18 @@ export default {
     background-size: cover;
     display: inline-block;
     transition: 0.5s;
+}
+
+.container-custom .slide .item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Modifica l'opacità secondo le tue esigenze */
+  border-radius: inherit;
+  z-index: 1; /* Posiziona l'overlay sopra l'immagine di background */
 }
 
 .slide .item:nth-child(1),
@@ -158,12 +171,12 @@ export default {
 }
 
 .slide .item:nth-child(n + 5) {
-    left: calc(50% + 430px);
+    left: calc(50% + 900px);
     opacity: 0;
 }
 
-.item .content {
-    position: absolute;
+.item .content-custom {
+    position: relative;
     top: 50%;
     left: 100px;
     width: 300px;
@@ -171,33 +184,35 @@ export default {
     color: #eee;
     transform: translate(0, -50%);
     display: none;
+    z-index: 2;
 }
 
-.slide .item:nth-child(2) .content {
+.slide .item:nth-child(2) .content-custom {
     display: block;
 }
 
-.content .name {
-    font-size: 40px;
+.content-custom .name {
+    font-size: 80px;
     text-transform: uppercase;
     font-weight: bold;
-    opacity: 1;
-   
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.1s 1 forwards; 
 }
 
-.content .des {
+.content-custom .des {
+  font-size: 30px;
     margin-top: 10px;
     margin-bottom: 20px;
-    opacity: 1;
-   
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
 }
 
-.content button {
+.content-custom button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    opacity: 1;
-    
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
 }
 
 @keyframes animate {
