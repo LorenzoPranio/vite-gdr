@@ -122,7 +122,7 @@ transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .cta-button:hover {
-background-color: #e06a1b;
+background-color: #b66834;
 color: #000000;
 transition: all 0.5s ease-in-out;
 }

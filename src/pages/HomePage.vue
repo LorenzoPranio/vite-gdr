@@ -97,7 +97,7 @@ export default {
 };
 </script>
 <template>
-    <div class="container">
+    <div class="container-custom">
       <div class="slide">
         <div
           class="item"
@@ -107,7 +107,7 @@ export default {
           <div class="content">
             <div class="name">{{ item.name }}</div>
             <div class="des">{{ item.description }}</div>
-            <button>Show More</button>
+            <button>Esplora</button>
           </div>
         </div>
       </div>
@@ -118,18 +118,16 @@ export default {
     </div>
 </template>
 <style lang="scss">
-.container {
+.container-custom {
     position: relative;
-    width: 800px;
-    height: 480px;
+    width: 100vw;
+    height: 100vh;
     background: #f5f5f5;
-    box-shadow: 0 30px 50px #dbdbdb;
-    margin-top: 50px;
 }
 
-.container .slide .item {
-    width: 165px;
-    height: 250px;
+.container-custom .slide .item {
+    width: 330px;
+    height: 500px;
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -152,11 +150,11 @@ export default {
 }
 
 .slide .item:nth-child(3) {
-    left: calc(50% + 20px);
+    left: calc(50% + 100px);
 }
 
 .slide .item:nth-child(4) {
-    left: calc(50% + 210px);
+    left: calc(50% + 500px);
 }
 
 .slide .item:nth-child(n + 5) {
@@ -224,12 +222,12 @@ export default {
 }
 
 .button button {
-    width: 40px;
-    height: 35px;
+    width: 100px;
+    height: 70px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    margin: 0 5px;
+    margin: 0 50px;
     border: 1px solid #000;
     transition: 0.3s;
 }
@@ -241,6 +239,6 @@ export default {
 
 .btn-svg{
     width: 65%;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 </style>

@@ -19,132 +19,120 @@ export default {
 </script>
 
 <template>
-    <div class="bg-black">
-        <div class="container">
-            <h1 class="text-center my-5">Chi Siamo</h1>
-            <p class="text-center mb-4">
-                Siamo un team di professionisti appassionati, dedicati a fornire
-                soluzioni innovative e di alta qualità ai nostri clienti.
-            </p>
-            <p class="text-center mb-4">
-                La nostra missione è creare valore attraverso l'innovazione e
-                l'eccellenza nel servizio, lavorando a stretto contatto con i
-                nostri clienti per raggiungere i loro obiettivi.
-            </p>
-
-            <h2 class="text-center my-4">Il Nostro Team</h2>
-            <div class="row">
-                <div class="col-md-4 team-member">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/150" alt="Membro del team" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Mario Rossi</h5>
-                            <p class="card-text">CEO & Fondatore</p>
-                            <p class="card-description">Mario è il nostro fondatore, con oltre 10 anni di esperienza nel settore.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 team-member">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/150" alt="Membro del team" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Giulia Bianchi</h5>
-                            <p class="card-text">Direttore Marketing</p>
-                            <p class="card-description">Giulia porta creatività e strategia al nostro team, garantendo la massima visibilità.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 team-member">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/150" alt="Membro del team" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Luca Verdi</h5>
-                            <p class="card-text">Sviluppatore Software</p>
-                            <p class="card-description">Luca è il nostro esperto di tecnologia, sempre pronto a trovare soluzioni innovative.</p>
-                        </div>
-                    </div>
+<div class="team">
+    <div class="box">
+        <div class="card text-center" style="--i:1;">
+            <div class="card-front">
+                <img src="../assets/gioele.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Gioele
+                    </h5>
+                    <h6><i class="fa-solid fa-mug-hot"></i> Il GOAT <i class="fa-solid fa-mug-hot"></i></h6>
                 </div>
             </div>
+            <div class="card-back"></div>
+        </div>
+        <div class="card text-center" style="--i:2;">
+            <div class="card-front">
+                <img src="../assets/lorenzo.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Lorenzo</h5>
+                    <h6><i class="fa-solid fa-paintbrush"></i> Il GraFICO <i class="fa-solid fa-paintbrush"></i></h6>
+                </div>
+            </div>
+            <div class="card-back"></div>
+        </div>
+        <div class="card text-center" style="--i:3;">
+            <div class="card-front">
+                <img src="../assets/mattia.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Mattia</h5>
+                    <h6><i class="fa-solid fa-crown"></i> Er Capoccia <i class="fa-solid fa-crown"></i></h6>
+                </div>
+            </div> 
+            <div class="card-back"></div>
+        </div>
+        <div class="card text-center" style="--i:4;">
+            <div class="card-front">
+                <img src="https://placehold.co/1024x1024?text=Francesco"  class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Francesco</h5>
+                    <h6><i class="fa-solid fa-heart-pulse"></i> Il Support <i class="fa-solid fa-heart-pulse"></i></h6>
+                </div>
+            </div>
+            <div class="card-back"></div>
+        </div>
+        <div class="card text-center" style="--i:5;">
+            <div class="card-front">
+                <img src="https://placehold.co/1024x1024?text=Roberto" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Roberto</h5>
+                    <h6><i class="fa-solid fa-ghost"></i> The Unknown <i class="fa-solid fa-ghost"></i></h6>
+                </div>
+            </div>
+            <div class="card-back"></div>
         </div>
     </div>
+</div>
 </template>
 
 
 <style lang="scss">
 
-.bg-black {
-    background-color: #121212;
-    color: white;
-    height: 100vh;
+.team {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background: #000;
 }
 
-
-.container {
-    padding: 40px;
-    max-width: 900px;
+.box {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    transform-style: preserve-3d;
+    animation: animate 30s linear infinite;
 }
 
-
-h1 {
-    color: #00aaff;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 2.5rem;
+@keyframes animate {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateY(360deg);
+    }
 }
 
-h2 {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 2rem;
+.box .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i)* 72deg)) translateZ(250px);
+    -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0004);
+    transition: transform 0.8s;
+    border: none;
 }
 
-.team-member {
-    margin-bottom: 30px;
+.card-front , .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
 }
 
-.card {
-    background-color: #1e1e1e;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card-front {
+    background: linear-gradient(135deg, #000000, #2F4F2F);
+    padding: 5px;
+    color:#D4AF37;
 }
 
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+.card-back {
+    background: linear-gradient(135deg, #000000, #2F4F2F);
+    transform: rotateY(180deg);
 }
-
-
-.card-img-top {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.card-title {
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
-.card-text {
-    color: #00aaff;
-    font-weight: 600;
-}
-
-.card-description {
-    font-size: 0.9rem;
-    color: #d1d1d1;
-    margin-top: 10px;
-}
-
-p {
-    text-align: center;
-    color: #d1d1d1;
-    margin-bottom: 20px;
-    font-size: 1rem;
-}
-
 </style>
