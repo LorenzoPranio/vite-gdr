@@ -29,16 +29,16 @@ export default {
 		<nav id="nav">
 			<ul>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/">Home</router-link>
+					<router-link to="/">Home</router-link>
 				</li>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/characters">Personaggi</router-link>
+					<router-link to="/characters">Personaggi</router-link>
 				</li>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/items">Oggetti</router-link>
+					<router-link to="/items">Oggetti</router-link>
 				</li>
 				<li>
-					<router-link class="text-light text-decoration-none" to="/who-we-are">Chi siamo</router-link>
+					<router-link to="/who-we-are">Chi siamo</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -86,10 +86,11 @@ header {
 	cursor: pointer;
 	border-radius: 50%;
 	transition: all 0.2s ease-in-out;
-	background: rgba(71, 58, 47, 0.6); /* Rosso Borgogna per un tocco di medievale */
+	background: rgba(48, 80, 48, 0.3);
 	&:hover {
 		transform: scale(1.2);
 		box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+		background: rgba(48, 80, 48, 0.6);
 	}
 }
 
@@ -108,7 +109,7 @@ header {
 }
 
 nav {
-	background: #2F4F2F; /* Marrone scuro per lo sfondo */
+	background: linear-gradient(135deg, #000000, #2F4F2F);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -130,6 +131,14 @@ nav {
 			line-height: 2.2;
 			text-transform: uppercase;
 			letter-spacing: 1.7px;
+			a:link, a:visited {
+				text-decoration: none;
+				color: #D4AF37;
+				&:hover {
+					color: #e06a1b;
+					transition: all 0.3s ease-in-out;
+				}
+			}
 		}
 	}
 }
@@ -143,7 +152,7 @@ nav.show {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #3B2F2F; /* Verde foresta per un'atmosfera naturale */
+	background: #000000; /* Verde foresta per un'atmosfera naturale */
 	height: 100%;
 	width: 0%;
 	transition: all 500ms cubic-bezier(0.62, 0.04, 0.3, 1.8);
