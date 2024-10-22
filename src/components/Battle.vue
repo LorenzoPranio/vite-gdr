@@ -7,48 +7,52 @@ export default {
 	data() {
 		return {
 			battleResult: null,
-			isBlocking: false, // Stato del blocco
+			intervalId: null,
 		};
 	},
 	methods: {
-		// Metodo per l'attacco del personaggio 1
-		character1Attack() {
-			let damage = this.calculateDamage(this.character1.strength, this.character2.defence);
-			if (this.isBlocking) {
-				damage = Math.floor(damage / 2); // Se il personaggio 2 blocca, riduci il danno a metà
-				this.isBlocking = false; // Bloccare funziona una sola volta per attacco
-			}
-			this.character2.life = Math.max(0, this.character2.life - damage);
-			this.checkBattleResult();
-		},
+		startBattle() {
+			// Resetta la vita dei personaggi all'inizio di ogni battaglia
+			this.character1.life = 100;
+			this.character2.life = 100;
+			this.battleResult = null;
 
-		// Metodo per il blocco del personaggio 2
-		character2Block() {
-			this.isBlocking = true; // Attiva lo stato di blocco
+			// Avvia la battaglia
+			this.intervalId = setInterval(() => {
+				this.executeTurn();
+			}, 1000);
 		},
+		executeTurn() {
+			// Calcola il danno inflitto da ciascun personaggio
+			const damage1 = Math.max(0, this.character1.strength - this.character2.defence + this.randomFactor());
+			const damage2 = Math.max(0, this.character2.strength - this.character1.defence + this.randomFactor());
 
-		// Metodo per calcolare il danno
-		calculateDamage(strength, defence) {
-			const baseDamage = Math.max(0, strength - defence);
-			const randomFactor = Math.floor(Math.random() * 6); // Aggiungi un fattore casuale
-			return baseDamage + randomFactor;
-		},
+			// Aggiorna la vita dei personaggi
+			this.character1.life = Math.max(0, this.character1.life - damage2);
+			this.character2.life = Math.max(0, this.character2.life - damage1);
 
-		// Controlla se c'è un vincitore
-		checkBattleResult() {
+			// Verifica se uno dei personaggi ha perso
 			if (this.character1.life <= 0 && this.character2.life <= 0) {
 				this.battleResult = "It's a draw!";
+				clearInterval(this.intervalId);
 			} else if (this.character1.life <= 0) {
+				this.character1.life = 0;
 				this.battleResult = `${this.character2.name} wins!`;
+				clearInterval(this.intervalId);
 			} else if (this.character2.life <= 0) {
+				this.character2.life = 0;
 				this.battleResult = `${this.character1.name} wins!`;
-			} else {
-				this.battleResult = null; // Se non c'è ancora un vincitore, continua la battaglia
+				clearInterval(this.intervalId);
 			}
+		},
+		randomFactor() {
+			// Aggiunge un po' di casualità per simulare i tiri di dado (es. da 0 a 5)
+			return Math.floor(Math.random() * 6);
 		},
 	},
 };
 </script>
+
 
 
 <template>
@@ -92,23 +96,23 @@ export default {
 				</div>
 			</div>
 		</div>
-
-		<!-- Bottoni per attaccare e bloccare -->
 		<div class="text-center mt-4">
-			<button class="btn btn-success" @click="character1Attack">Personaggio 1 Attacca</button>
-			<button class="btn btn-warning" @click="character2Block">Personaggio 2 Blocca</button>
+			<button class="btn btn-success" @click="startBattle">Start Battle</button>
 		</div>
-
 		<div v-if="battleResult" class="text-center mt-4">
 			<h3>{{ battleResult }}</h3>
 		</div>
 	</div>
 </template>
 
+
 <style scoped>
 img {
 	width: 100%;
 	height: auto;
 	object-fit: contain;
+}
+.progress-bar {
+	transition: width 0.5s ease-in-out;
 }
 </style>
