@@ -6,6 +6,7 @@ export default {
 	data() {
 		return {
 			store,
+			hoveredCharacter: null, // Aggiungi per tenere traccia del personaggio su cui si passa col mouse
 		};
 	},
 	mounted() {
@@ -53,15 +54,10 @@ export default {
 		};
 
 		window.onmousedown = (e) => handleOnDown(e);
-
 		window.ontouchstart = (e) => handleOnDown(e.touches[0]);
-
 		window.onmouseup = (e) => handleOnUp(e);
-
 		window.ontouchend = (e) => handleOnUp(e.touches[0]);
-
 		window.onmousemove = (e) => handleOnMove(e);
-
 		window.ontouchmove = (e) => handleOnMove(e.touches[0]);
 	},
 	methods: {
@@ -70,27 +66,50 @@ export default {
 				store.characters = response.data.results;
 			});
 		},
+		showOverlay(character) {
+			this.hoveredCharacter = character;
+		},
+		hideOverlay() {
+			this.hoveredCharacter = null;
+		},
 	},
 };
 </script>
+
 <template>
-	<div class="body-characters">
-		<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-			<img
-				v-for="(character, index) in store.characters"
-				:key="index"
-				:src="`/img/character_images/${character.name}.webp`"
-				:alt="character.name"
-				class="image"
-				draggable="false" />
+	<div class="bg-characters">
+		<div class="body-characters">
+			<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+				<div
+					v-for="(character, index) in store.characters"
+					:key="index"
+					class="image-container"
+					@mouseover="showOverlay(character)"
+					@mouseleave="hideOverlay">
+					<img
+						:src="`/img/character_images/${character.name}.webp`"
+						:alt="character.name"
+						class="image"
+						draggable="false" />
+					<div v-if="hoveredCharacter === character" class="overlay">
+						<h3>{{ character.name }}</h3>
+						<p class="text-light">{{ character.description }}</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
+
 <style lang="scss">
+.bg-characters {
+	background-image: url(../assets/wall_backgroung.webp);
+	background-size: cover;
+}
 .body-characters {
 	height: 100vh;
 	width: 100vw;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.65);
 	margin: 0rem;
 	overflow-x: hidden;
 	position: relative;
@@ -106,11 +125,45 @@ export default {
 	user-select: none;
 }
 
-#image-track > .image {
+#image-track > .image-container {
+	position: relative;
 	width: 28vmin;
 	height: 38vmin;
+
+	&:hover .image {
+		transform: scale(1.1);
+		transition: 0.2s;
+		cursor: pointer;
+	}
+}
+
+.image {
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 	object-position: 100% center;
 	border-radius: 15px;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.75);
+	color: #d4af37;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 15px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.image-container:hover .overlay {
+	opacity: 1;
 }
 </style>

@@ -18,67 +18,57 @@ export default {
 					name: "Sky Fortress",
 					description: "A magical flying fortress drifting above the clouds...",
 					image: wallpaper_01,
-					url: "",
 				},
 				{
 					name: "Elven Sanctuary",
 					description:
 						"A serene elven village hidden deep in an ancient forest...",
 					image: wallpaper_02,
-					url: "",
 				},
 				{
 					name: "Ancient Dungeon",
 					description:
 						"A dark and eerie dungeon with stone walls covered in moss and runes...",
 					image: wallpaper_03,
-					url: "",
 				},
 				{
 					name: "Enchanted Forest",
 					description:
 						"A mysterious forest with ancient, twisted trees covered in glowing runes...",
 					image: wallpaper_04,
-					url: "",
 				},
 				{
 					name: "Dragon's Cave",
 					description:
 						"A massive, dimly lit cave filled with piles of glittering treasure...",
 					image: wallpaper_05,
-					url: "",
 				},
 				{
 					name: "Majestic Castle",
 					description: "A towering medieval castle built atop a high cliff...",
 					image: wallpaper_06,
-					url: "",
 				},
 				{
 					name: "Epic Battle Scene",
 					description: "A medieval fantasy battlefield at sunset...",
 					image: wallpaper_07,
-					url: "",
 				},
 				{
 					name: "Mythical City",
 					description: "A sprawling medieval city built on floating islands...",
 					image: wallpaper_08,
-					url: "",
 				},
 				{
 					name: "Dark Sorcerer's Lair",
 					description:
 						"A dark and menacing underground cavern filled with skulls...",
 					image: wallpaper_09,
-					url: "",
 				},
 				{
 					name: "Battle Against the Undead",
 					description:
 						"A dark and foggy battlefield where an army of undead skeletons...",
 					image: wallpaper_10,
-					url: "",
 				},
 			],
 		};
@@ -103,7 +93,7 @@ export default {
 };
 </script>
 <template>
-	<div class="container">
+	<div class="container-custom">
 		<div class="slide">
 			<div
 				class="item"
@@ -113,7 +103,7 @@ export default {
 				<div class="content">
 					<div class="name">{{ item.name }}</div>
 					<div class="des">{{ item.description }}</div>
-					<button>Show More</button>
+					<button>Esplora</button>
 				</div>
 			</div>
 		</div>
@@ -128,18 +118,16 @@ export default {
 	</div>
 </template>
 <style lang="scss">
-.container {
+.container-custom {
 	position: relative;
-	width: 800px;
-	height: 480px;
+	width: 100vw;
+	height: 100vh;
 	background: #f5f5f5;
-	box-shadow: 0 30px 50px #dbdbdb;
-	margin-top: 50px;
 }
 
-.container .slide .item {
-	width: 165px;
-	height: 250px;
+.container-custom .slide .item {
+	width: 330px;
+	height: 500px;
 	position: absolute;
 	top: 50%;
 	transform: translate(0, -50%);
@@ -230,12 +218,12 @@ export default {
 	width: 100%;
 	text-align: center;
 	position: absolute;
-	bottom: 70px;
+	bottom: 20px;
 }
 
 .button button {
-	width: 40px;
-	height: 35px;
+	width: 100px;
+	height: 70px;
 	border-radius: 8px;
 	border: none;
 	cursor: pointer;

@@ -38,6 +38,9 @@ export default {
 					<router-link to="/items">Oggetti</router-link>
 				</li>
 				<li>
+					<router-link to="/game-board">Gioca</router-link>
+				</li>
+				<li>
 					<router-link to="/who-we-are">Chi siamo</router-link>
 				</li>
 			</ul>
@@ -62,7 +65,7 @@ header {
 	top: 50%;
 	width: 32px;
 	height: 3px;
-	background-color: #D4AF37; /* Oro per gli hamburger icon */
+	background-color: #d4af37; /* Oro per gli hamburger icon */
 	transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
 }
 
@@ -109,7 +112,7 @@ header {
 }
 
 nav {
-	background: linear-gradient(135deg, #000000, #2F4F2F);
+	background: linear-gradient(135deg, #000000, #2f4f2f);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -127,13 +130,14 @@ nav {
 		li {
 			list-style: none;
 			font-size: 24px;
-			color: #D4AF37; /* Oro per i link */
+			color: #d4af37; /* Oro per i link */
 			line-height: 2.2;
 			text-transform: uppercase;
 			letter-spacing: 1.7px;
-			a:link, a:visited {
+			a:link,
+			a:visited {
 				text-decoration: none;
-				color: #D4AF37;
+				color: #d4af37;
 				&:hover {
 					color: #e06a1b;
 					transition: all 0.3s ease-in-out;

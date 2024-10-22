@@ -3,6 +3,8 @@ import HomePage from '../pages/HomePage.vue'
 import Characters from '../pages/Characters.vue'
 import ContactUs from '../pages/ContactUs.vue'
 import WhoWeAre from '../pages/WhoWeAre.vue'
+import ItemsPage from '../pages/ItemsPage.vue'
+import GameBoard from '../pages/GameBoard.vue'
 
 const routes = [
   {
@@ -16,6 +18,11 @@ const routes = [
     component: Characters
   },
   {
+    path: '/items',
+    name: 'ItemsPage',
+    component: ItemsPage
+  },
+  {
     path: '/contact-us',
     name: 'ContactUs',
     component: ContactUs
@@ -24,7 +31,12 @@ const routes = [
     path: '/who-we-are',
     name: 'WhoWeAre',
     component: WhoWeAre
-  }
+  },
+  {
+    path: '/game-board',
+    name: 'GameBoard',
+    component: GameBoard
+  },
 ]
 
 const router = createRouter({
