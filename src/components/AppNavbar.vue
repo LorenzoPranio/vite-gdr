@@ -29,19 +29,42 @@ export default {
 		<nav id="nav">
 			<ul>
 				<li>
-					<router-link to="/">Home</router-link>
+					<router-link to="/">
+						<i class="me-3 fa-solid fa-dice-d20" v-if="$route.path === '/'"></i
+						>Home
+					</router-link>
 				</li>
 				<li>
-					<router-link to="/characters">Personaggi</router-link>
+					<router-link to="/characters">
+						<i
+							class="me-3 fa-solid fa-dice-d20"
+							v-if="$route.path === '/characters'"></i
+						>Personaggi
+					</router-link>
 				</li>
 				<li>
-					<router-link to="/items">Oggetti</router-link>
+					<router-link to="/items">
+						<i
+							class="me-3 fa-solid fa-dice-d20"
+							v-if="$route.path === '/items'"></i
+						>Oggetti
+					</router-link>
 				</li>
 				<li>
-					<router-link to="/game-board">Gioca</router-link>
+					<router-link to="/game-board">
+						<i
+							class="me-3 fa-solid fa-dice-d20"
+							v-if="$route.path === '/game-board'"></i
+						>Gioca
+					</router-link>
 				</li>
 				<li>
-					<router-link to="/who-we-are">Chi siamo</router-link>
+					<router-link to="/who-we-are">
+						<i
+							class="me-3 fa-solid fa-dice-d20"
+							v-if="$route.path === '/who-we-are'"></i
+						>Chi siamo
+					</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -126,7 +149,7 @@ nav {
 		margin: 0;
 		position: absolute;
 		top: 30%;
-		left: 40%;
+		left: 30%;
 		li {
 			list-style: none;
 			font-size: 24px;
@@ -134,6 +157,7 @@ nav {
 			line-height: 2.2;
 			text-transform: uppercase;
 			letter-spacing: 1.7px;
+
 			a:link,
 			a:visited {
 				text-decoration: none;

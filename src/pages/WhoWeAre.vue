@@ -101,6 +101,7 @@ export default {
 <style lang="scss">
 .bg-who {
 	background-image: url(../assets/wall_backgroung.webp);
+	background-size: cover;
 }
 
 .team {

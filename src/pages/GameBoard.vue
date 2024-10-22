@@ -3,7 +3,7 @@
 		v-if="store.characters && store.characters.length > 0"
 		class="bodyBattle">
 		<div class="container">
-			<div class="row">
+			<div class="row container_character_selection">
 				<div class="col-6 user_card">
 					<div class="card">
 						<img
@@ -75,7 +75,7 @@
 
 <script>
 import { store } from "../store";
-import Battle from "./Battle.vue";
+import Battle from "../components/Battle.vue";
 
 export default {
 	components: {
@@ -129,6 +129,10 @@ export default {
 </script>
 
 <style scoped>
+.container_character_selection {
+	margin-bottom: 100px;
+}
+
 .user_card {
 	position: relative;
 }

@@ -43,7 +43,9 @@ export default {
 							<svg viewBox="0 0 24 24"><!-- Instagram Icon --></svg>
 						</a>
 					</div>
-					<a href="#" class="cta-button text-center">Contattaci</a>
+					<router-link to="/contact-us" class="cta-button text-center"
+						>Contattaci</router-link
+					>
 				</div>
 			</transition>
 		</footer>

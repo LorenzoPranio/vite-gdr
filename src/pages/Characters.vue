@@ -151,7 +151,6 @@ export default {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	padding: 5px;
 	background-color: rgba(0, 0, 0, 0.75);
 	color: #d4af37;
 	display: flex;
@@ -160,7 +159,7 @@ export default {
 	align-items: center;
 	border-radius: 15px;
 	opacity: 0;
-	transition: opacity 0.3s;
+	transition: opacity 0.2s;
 }
 
 .image-container:hover .overlay {

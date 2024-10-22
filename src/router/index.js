@@ -37,6 +37,7 @@ const routes = [
     name: 'GameBoard',
     component: GameBoard
   },
+
 ]
 
 const router = createRouter({

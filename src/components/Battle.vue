@@ -1,51 +1,3 @@
-<template>
-	<div class="container-fluid">
-		<div class="row">
-			<h2 class="text-center">Battle!</h2>
-			<div class="col-6">
-				<h3>{{ character1.name }}</h3>
-				<img
-					:src="`/img/character_images/${character1.name}.webp`"
-					:alt="character1.name" />
-				<p>Life: {{ character1.life }}</p>
-				<div
-					class="progress"
-					role="progressbar"
-					aria-label="Basic example"
-					:aria-valuenow="this.character1.life"
-					aria-valuemin="0"
-					aria-valuemax="100">
-					<div
-						class="progress-bar"
-						:style="`width: ${this.character1.life}%`"></div>
-				</div>
-			</div>
-			<div class="col-6">
-				<h3>{{ character2.name }}</h3>
-				<img
-					:src="`/img/character_images/${character2.name}.webp`"
-					:alt="character2.name" />
-				<p>Life: {{ character2.life }}</p>
-				<div
-					class="progress"
-					role="progressbar"
-					aria-label="Basic example"
-					:aria-valuenow="this.character2.life"
-					aria-valuemin="0"
-					aria-valuemax="100">
-					<div
-						class="progress-bar"
-						:style="`width: ${this.character2.life}%`"></div>
-				</div>
-			</div>
-		</div>
-		<button @click="startBattle">Start Battle</button>
-		<div v-if="battleResult">
-			<h3>{{ battleResult }}</h3>
-		</div>
-	</div>
-</template>
-
 <script>
 export default {
 	props: {
@@ -89,6 +41,54 @@ export default {
 	},
 };
 </script>
+
+<template>
+	<div class="container-fluid">
+		<div class="row mb-5">
+			<h2 class="text-center">Battle!</h2>
+			<div class="col-6">
+				<h3 class="text-center">{{ character1.name }}</h3>
+				<img
+					:src="`/img/character_images/${character1.name}.webp`"
+					:alt="character1.name" />
+				<p>Life: {{ character1.life }}</p>
+				<div
+					class="progress"
+					role="progressbar"
+					aria-label="Basic example"
+					:aria-valuenow="this.character1.life"
+					aria-valuemin="0"
+					aria-valuemax="100">
+					<div
+						class="progress-bar"
+						:style="`width: ${this.character1.life}%`"></div>
+				</div>
+			</div>
+			<div class="col-6">
+				<h3 class="text-center">{{ character2.name }}</h3>
+				<img
+					:src="`/img/character_images/${character2.name}.webp`"
+					:alt="character2.name" />
+				<p>Life: {{ character2.life }}</p>
+				<div
+					class="progress"
+					role="progressbar"
+					aria-label="Basic example"
+					:aria-valuenow="this.character2.life"
+					aria-valuemin="0"
+					aria-valuemax="100">
+					<div
+						class="progress-bar"
+						:style="`width: ${this.character2.life}%`"></div>
+				</div>
+			</div>
+		</div>
+		<button @click="startBattle">Start Battle</button>
+		<div v-if="battleResult">
+			<h3>{{ battleResult }}</h3>
+		</div>
+	</div>
+</template>
 
 <style scoped>
 img {
