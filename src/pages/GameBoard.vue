@@ -27,6 +27,32 @@
                     <button class="prev" @click="prevCharacter"><</button>
                     <button class="next" @click="nextCharacter">></button>
                 </div>
+                <div class="col-6" v-if="store.characters[randomCharacters]">
+                    <div class="card">
+                        <img
+                            class="card-img-top"
+                            :src="`/img/character_images/${store.characters[randomCharacters].name}.webp`"
+                            :alt="store.characters[randomCharacters].name" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">
+                                {{ store.characters[randomCharacters].name }}
+                            </h5>
+                            <p class="card-text">
+                                {{ store.characters[randomCharacters].description }}
+                            </p>
+                            <div>Difesa: {{ store.characters[randomCharacters].defence }}</div>
+                            <div>
+                                Intelligenza: {{ store.characters[randomCharacters].intelligence }}
+                            </div>
+                            <div>Vita: {{ store.characters[randomCharacters].life }}</div>
+                            <div>Velocità: {{ store.characters[randomCharacters].speed }}</div>
+                            <div>Forza: {{ store.characters[randomCharacters].strength }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-3">
+                    <button class="btn bg-success text-white" @click="startGame">Start Game</button>
+                </div>
             </div>
         </div>
     </div>
@@ -40,6 +66,7 @@ export default {
         return {
             store,
             currentIndex: 0,
+            randomCharacters: 3,
         }
     },
     methods: {
@@ -55,6 +82,12 @@ export default {
                 this.currentIndex--
             } else {
                 this.currentIndex = this.store.characters.length - 1 // Torna all'ultimo personaggio
+            }
+        },
+        startGame() {
+            const randomNumber = Math.floor(Math.random() * store.characters.length)
+            if (randomNumber !== this.currentIndex) {
+                this.randomCharacters = randomNumber
             }
         },
     },
