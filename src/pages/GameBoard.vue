@@ -131,6 +131,10 @@ export default {
 <style scoped>
 .container_character_selection {
 	margin-bottom: 100px;
+
+	p {
+		color: black;
+	}
 }
 
 .user_card {
