@@ -1,8 +1,8 @@
 <script>
 export default {
     mounted() {
-        window.addEventListener('load', () => {
-            const formElements = document.querySelectorAll('.form-group');
+
+        const formElements = document.querySelectorAll('.form-group');
             let delay = 200;
             formElements.forEach((element, index) => {
                 requestAnimationFrame(() => {
@@ -11,9 +11,7 @@ export default {
                         element.style.transform = 'translateY(0)';
                     }, delay * index);
                 });
-            });
         });
-
 
         const inputs = document.querySelectorAll('.form-control');
 
@@ -64,12 +62,13 @@ export default {
 
 </script>
 <template>
-    <div class="bg-black">
+<div class="bg-items">
+    <div class="bg-contact">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
-                    <h1 class="text-center my-5 fw-bold">Contattaci</h1>
-                    <p class="text-center mb-4">Ci piacerebbe sentirti! Compila il modulo qui sotto e ti risponderemo il prima possibile.</p>
+                    <h1 class="text-center fw-bold">Contattaci</h1>
+                    <p class="text-center">Ci piacerebbe sentirti! Compila il modulo qui sotto e ti risponderemo il prima possibile.</p>
                     
                     <form>
                         <div class="form-group mb-3">
@@ -93,19 +92,23 @@ export default {
                         </div>
     
                         <div class="form-group d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg">Invia Messaggio</button>
+                            <button type="submit" class="btn-lg">Invia Messaggio</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </template>
     
 <style lang="scss">
-
-.bg-black {
-    background-color: black;
+.bg-items {
+	background-image: url(../assets/wall_backgroung.webp);
+	background-size: cover;
+}
+.bg-contact {
+    background-color: rgba(0, 0, 0, 0.65);
     color: white;
     height: 100vh;
     width: 100vw;
@@ -138,7 +141,7 @@ export default {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #222; 
+    color: #d4af37; 
     font-weight: 700;
 }
 
@@ -146,7 +149,7 @@ h1 {
 p {
     text-align: center;
     margin-bottom: 40px;
-    color: #8f8f8f; 
+    color: #ffffff; 
     font-size: 18px;
 }
 
@@ -175,15 +178,18 @@ p {
 .contact-form input:focus, 
 .contact-form textarea:focus {
     outline: none;
-    border-color: #00aaff;
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3); 
+    border-color: #d4af37;
 }
 
 
 button {
     padding: 12px;
-    background-color: #00aaff;
-    color: white;
+    background: linear-gradient(
+		45deg,
+		#000000,
+		#2f4f2f
+	);
+    color: #d4af37;
     border: none;
     border-radius: 5px;
     font-size: 18px;
@@ -191,12 +197,10 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 170, 255, 0.3);
 }
 
 
 button:hover {
-    background-color: #0088cc;
     transform: scale(1.05);
 }
 
