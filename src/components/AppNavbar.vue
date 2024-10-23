@@ -2,18 +2,48 @@
 export default {
 	mounted() {
 		var icon = document.getElementById("icon");
+		var nav = document.getElementById("nav");
+		var blue = document.getElementById("blue");
 		var icon1 = document.getElementById("a");
 		var icon2 = document.getElementById("b");
 		var icon3 = document.getElementById("c");
-		var nav = document.getElementById("nav");
-		var blue = document.getElementById("blue");
 
-		icon.addEventListener("click", function () {
+		// Toggle menu quando l'icona è cliccata
+		icon.addEventListener("click", function (event) {
 			icon1.classList.toggle("a");
 			icon2.classList.toggle("c");
 			icon3.classList.toggle("b");
 			nav.classList.toggle("show");
 			blue.classList.toggle("slide");
+		});
+
+		// Chiude il menu quando si clicca fuori
+		document.addEventListener("click", function (event) {
+			var isClickInsideNav = nav.contains(event.target);
+			var isClickInsideIcon = icon.contains(event.target);
+
+			// Se non si clicca sull'icona o sulla navbar, chiudi il menu
+			if (
+				!isClickInsideNav &&
+				!isClickInsideIcon &&
+				nav.classList.contains("show")
+			) {
+				icon1.classList.remove("a");
+				icon2.classList.remove("c");
+				icon3.classList.remove("b");
+				nav.classList.remove("show");
+				blue.classList.remove("slide");
+			}
+		});
+
+		// Chiude la navbar quando si cambia pagina (rotta)
+		this.$router.afterEach(() => {
+			// Rimuove le classi per chiudere la navbar
+			icon1.classList.remove("a");
+			icon2.classList.remove("c");
+			icon3.classList.remove("b");
+			nav.classList.remove("show");
+			blue.classList.remove("slide");
 		});
 	},
 };
@@ -51,10 +81,10 @@ export default {
 					</router-link>
 				</li>
 				<li>
-					<router-link to="/game-board">
+					<router-link to="/game-two">
 						<i
 							class="me-3 fa-solid fa-dice-d20"
-							v-if="$route.path === '/game-board'"></i
+							v-if="$route.path === '/game-two'"></i
 						>Gioca
 					</router-link>
 				</li>
@@ -74,7 +104,7 @@ export default {
 
 <style lang="scss">
 header {
-	width: 50%;
+	width: 30%;
 	height: 100%;
 	position: absolute;
 	overflow: auto;
@@ -172,7 +202,7 @@ nav {
 }
 
 nav.show {
-	width: 50%;
+	width: 75%;
 	opacity: 1;
 }
 

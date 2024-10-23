@@ -83,7 +83,9 @@
 							:aria-valuemax="store.characters[currentIndex].maxLife">
 							<div
 								class="progress-bar bg-danger"
-								:style="{ width: store.characters[currentIndex].life + '%' }"></div>
+								:style="{
+									width: store.characters[currentIndex].life + '%',
+								}"></div>
 						</div>
 					</div>
 					<div class="col-6">
@@ -101,12 +103,16 @@
 							:aria-valuemax="store.characters[randomCharacters].maxLife">
 							<div
 								class="progress-bar bg-primary"
-								:style="{ width: store.characters[randomCharacters].life + '%' }"></div>
+								:style="{
+									width: store.characters[randomCharacters].life + '%',
+								}"></div>
 						</div>
 					</div>
 				</div>
 				<div class="text-center mt-4">
-					<button class="btn btn-success" @click="startBattle">Start Battle</button>
+					<button class="btn btn-success" @click="startBattle">
+						Start Battle
+					</button>
 				</div>
 				<div v-if="battleResult" class="text-center mt-4">
 					<h3>{{ battleResult }}</h3>
@@ -177,24 +183,47 @@ export default {
 		},
 		executeTurn() {
 			// Calcola il danno inflitto da ciascun personaggio
-			const damage1 = Math.max(0, this.store.characters[this.currentIndex].strength - this.store.characters[this.randomCharacters].defence + this.randomFactor());
-			const damage2 = Math.max(0, this.store.characters[this.randomCharacters].strength - this.store.characters[this.currentIndex].defence + this.randomFactor());
+			const damage1 = Math.max(
+				0,
+				this.store.characters[this.currentIndex].strength -
+					this.store.characters[this.randomCharacters].defence +
+					this.randomFactor()
+			);
+			const damage2 = Math.max(
+				0,
+				this.store.characters[this.randomCharacters].strength -
+					this.store.characters[this.currentIndex].defence +
+					this.randomFactor()
+			);
 
 			// Aggiorna la vita dei personaggi
-			this.store.characters[this.currentIndex].life = Math.max(0, this.store.characters[this.currentIndex].life - damage2);
-			this.store.characters[this.randomCharacters].life = Math.max(0, this.store.characters[this.randomCharacters].life - damage1);
+			this.store.characters[this.currentIndex].life = Math.max(
+				0,
+				this.store.characters[this.currentIndex].life - damage2
+			);
+			this.store.characters[this.randomCharacters].life = Math.max(
+				0,
+				this.store.characters[this.randomCharacters].life - damage1
+			);
 
 			// Verifica se uno dei personaggi ha perso
-			if (this.store.characters[this.currentIndex].life <= 0 && this.store.characters[this.randomCharacters].life <= 0) {
+			if (
+				this.store.characters[this.currentIndex].life <= 0 &&
+				this.store.characters[this.randomCharacters].life <= 0
+			) {
 				this.battleResult = "It's a draw!";
 				clearInterval(this.intervalId);
 			} else if (this.store.characters[this.currentIndex].life <= 0) {
 				this.store.characters[this.currentIndex].life = 0;
-				this.battleResult = `${this.store.characters[this.randomCharacters].name} wins!`;
+				this.battleResult = `${
+					this.store.characters[this.randomCharacters].name
+				} wins!`;
 				clearInterval(this.intervalId);
 			} else if (this.store.characters[this.randomCharacters].life <= 0) {
 				this.store.characters[this.randomCharacters].life = 0;
-				this.battleResult = `${this.store.characters[this.currentIndex].name} wins!`;
+				this.battleResult = `${
+					this.store.characters[this.currentIndex].name
+				} wins!`;
 				clearInterval(this.intervalId);
 			}
 		},
@@ -209,10 +238,9 @@ export default {
 <style scoped>
 .container_character_selection {
 	margin-bottom: 100px;
-
-	p {
-		color: black;
-	}
+}
+p {
+	color: black;
 }
 
 .user_card {

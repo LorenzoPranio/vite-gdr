@@ -42,7 +42,7 @@ export default {
 					description:
 						"Entra in un mondo di avventure senza limiti, dove le tue scelte plasmano il destino. Crea il tuo eroe, esplora terre misteriose e affronta sfide epiche. Sei pronto a scrivere la tua leggenda?",
 					image: Dungeon,
-					route: "/game-board",
+					route: "/game-two",
 				},
 			],
 		};

@@ -23,7 +23,7 @@ export default {
 	<div>
 		<AppNavbar v-if="showNavbar" />
 		<router-view></router-view>
-		<AppFooter v-if="showFooter" />
+		<!-- <AppFooter v-if="showFooter" /> -->
 	</div>
 </template>
 

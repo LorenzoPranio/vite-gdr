@@ -5,6 +5,7 @@ import ContactUs from '../pages/ContactUs.vue'
 import WhoWeAre from '../pages/WhoWeAre.vue'
 import ItemsPage from '../pages/ItemsPage.vue'
 import GameBoard from '../pages/GameBoard.vue'
+import GameTwo from '../pages/GameTwo.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     name: 'GameBoard',
     component: GameBoard
   },
+  {
+    path: '/game-two',
+    name: 'GameTwo',
+    component: GameTwo
+  }
 
 ]
 
