@@ -1,121 +1,3 @@
-<template>
-	<div
-		v-if="characters.length > 0"
-		class="container d-flex justify-content-center">
-		<!-- Selezione del personaggio o battaglia -->
-		<div v-if="!gameStarted" class="character-selection text-center">
-			<h2>Seleziona il tuo personaggio</h2>
-			<div class="card">
-				<img
-					:src="`/img/character_images/${characters[currentIndex].name}.webp`"
-					:alt="characters[currentIndex].name" />
-				<div class="card-body text-center">
-					<h5 class="card-title">{{ characters[currentIndex].name }}</h5>
-					<p class="card-text">{{ characters[currentIndex].description }}</p>
-					<div>Difesa: {{ characters[currentIndex].defence }}</div>
-					<div>Intelligenza: {{ characters[currentIndex].intelligence }}</div>
-					<div>Vita: {{ characters[currentIndex].life }}</div>
-					<div>Velocità: {{ characters[currentIndex].speed }}</div>
-					<div>Forza: {{ characters[currentIndex].strength }}</div>
-					<div>
-						Abilità:
-						{{
-							characters[currentIndex].ability
-								? characters[currentIndex].ability.name
-								: "Nessuna Abilità"
-						}}
-					</div>
-				</div>
-			</div>
-			<div class="button-group text-center">
-				<button class="prev" @click="prevCharacter">&lt;</button>
-				<button class="next" @click="nextCharacter">&gt;</button>
-			</div>
-			<button class="start-game" @click="selectCharacter">
-				Seleziona e Inizia
-			</button>
-		</div>
-
-		<!-- Schermata di battaglia -->
-		<div v-if="gameStarted" class="battle-screen container text-center">
-			<div class="players d-flex justify-content-center">
-				<div class="player-info">
-					<h3>{{ selectedCharacter.name }}</h3>
-					<img
-						:src="`/img/character_images/${selectedCharacter.name}.webp`"
-						:alt="selectedCharacter.name" />
-					<p>
-						Vita: {{ selectedCharacter.life }} / {{ selectedCharacter.maxLife }}
-					</p>
-					<div
-						class="progress"
-						role="progressbar"
-						:aria-valuenow="selectedCharacter.life"
-						aria-valuemin="0"
-						:aria-valuemax="selectedCharacter.maxLife">
-						<div
-							class="progress-bar bg-danger"
-							:style="{
-								width:
-									(selectedCharacter.life / selectedCharacter.maxLife) * 100 +
-									'%',
-							}"></div>
-					</div>
-				</div>
-				<div class="enemy-info">
-					<h3>{{ enemyCharacter.name }}</h3>
-					<img
-						:src="`/img/character_images/${enemyCharacter.name}.webp`"
-						:alt="enemyCharacter.name" />
-					<p>Vita: {{ enemyCharacter.life }} / {{ enemyCharacter.maxLife }}</p>
-					<div
-						class="progress"
-						role="progressbar"
-						:aria-valuenow="enemyCharacter.life"
-						aria-valuemin="0"
-						:aria-valuemax="enemyCharacter.maxLife">
-						<div
-							class="progress-bar bg-primary"
-							:style="{
-								width:
-									(enemyCharacter.life / enemyCharacter.maxLife) * 100 + '%',
-							}"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="actions text-center">
-				<button @click="attack" :disabled="gameOver">Inizia</button>
-				<!-- Altri pulsanti possono essere aggiunti qui -->
-			</div>
-
-			<div v-if="battleResult" class="battle-result">
-				<h3>{{ battleResult }}</h3>
-			</div>
-
-			<!-- Log delle azioni -->
-			<div class="action-log">
-				<h4>Log delle azioni</h4>
-				<div ref="actionLogContainer" class="action-log-container">
-					<div v-for="(log, index) in actionLog" :key="index">
-						{{ log }}
-					</div>
-				</div>
-			</div>
-
-			<!-- Bottone reset posizionato sotto il log delle azioni -->
-			<button @click="resetGame" class="reset-button text-center">
-				Nuova Partita
-			</button>
-		</div>
-	</div>
-
-	<!-- Messaggio se non ci sono personaggi -->
-	<div v-else>
-		<h2>Nessun personaggio disponibile!</h2>
-	</div>
-</template>
-
 <script>
 import axios from "axios"; // Assicurati di aver importato Axios
 import { store } from "../store"; // Il tuo store
@@ -367,11 +249,127 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Aggiungi qui il tuo CSS per lo styling */
-.container {
-	max-width: 800px;
-	margin: auto;
+<template>
+<div class="bg-img">
+	<div
+		v-if="characters.length > 0"
+		class="container d-flex justify-content-center">
+		<!-- Selezione del personaggio o battaglia -->
+		<div v-if="!gameStarted" class="character-selection text-center">
+			<h2 class="mt-5">Seleziona il tuo personaggio</h2>
+			<div class="card my-3">
+				<img
+					:src="`/img/character_images/${characters[currentIndex].name}.webp`"
+					:alt="characters[currentIndex].name" class="rounded-top"/>
+				<div class="card-body text-center">
+					<h5 class="card-title">{{ characters[currentIndex].name }}</h5>
+					<p class="card-text">{{ characters[currentIndex].description }}</p>
+					<div><strong>Difesa:</strong> {{ characters[currentIndex].defence }}</div>
+					<div><strong>Intelligenza:</strong>  {{ characters[currentIndex].intelligence }}</div>
+					<div><strong>Vita:</strong>  {{ characters[currentIndex].life }}</div>
+					<div><strong>Velocità:</strong>  {{ characters[currentIndex].speed }}</div>
+					<div><strong>Forza:</strong>  {{ characters[currentIndex].strength }}</div>
+					<div><strong>Classe:</strong> 
+						{{
+							characters[currentIndex].types
+						}}
+					</div>
+				</div>
+			</div>
+			<div class="button-group text-center">
+				<button class="prev" @click="prevCharacter">&lt;</button>
+				<button class="next" @click="nextCharacter">&gt;</button>
+			</div>
+			<button class="start-game" @click="selectCharacter">
+				Seleziona e Inizia
+			</button>
+		</div>
+
+		<!-- Schermata di battaglia -->
+		<div v-if="gameStarted" class="battle-screen container text-center">
+			<div class="players d-flex justify-content-center">
+				<div class="player-info">
+					<h3>{{ selectedCharacter.name }}</h3>
+					<img
+						:src="`/img/character_images/${selectedCharacter.name}.webp`"
+						:alt="selectedCharacter.name" />
+					<p>
+						Vita: {{ selectedCharacter.life }} / {{ selectedCharacter.maxLife }}
+					</p>
+					<div
+						class="progress"
+						role="progressbar"
+						:aria-valuenow="selectedCharacter.life"
+						aria-valuemin="0"
+						:aria-valuemax="selectedCharacter.maxLife">
+						<div
+							class="progress-bar bg-danger"
+							:style="{
+								width:
+									(selectedCharacter.life / selectedCharacter.maxLife) * 100 +
+									'%',
+							}"></div>
+					</div>
+					<button class="game-button mt-4" @click="attack" :disabled="gameOver">Inizia</button>
+				</div>
+				<div class="enemy-info">
+					<h3>{{ enemyCharacter.name }}</h3>
+					<img
+						:src="`/img/character_images/${enemyCharacter.name}.webp`"
+						:alt="enemyCharacter.name" />
+					<p>Vita: {{ enemyCharacter.life }} / {{ enemyCharacter.maxLife }}</p>
+					<div
+						class="progress"
+						role="progressbar"
+						:aria-valuenow="enemyCharacter.life"
+						aria-valuemin="0"
+						:aria-valuemax="enemyCharacter.maxLife">
+						<div
+							class="progress-bar bg-primary"
+							:style="{
+								width:
+									(enemyCharacter.life / enemyCharacter.maxLife) * 100 + '%',
+							}"></div>
+					</div>
+					<button @click="resetGame" class="reset-button text-center mt-4">
+						Nuova Partita
+					</button>
+				</div>
+			</div>
+
+			<div v-if="battleResult" class="battle-result">
+				<h3>{{ battleResult }}</h3>
+			</div>
+
+			<!-- Log delle azioni -->
+			<div class="action-log">
+				<h4>Log delle azioni</h4>
+				<div ref="actionLogContainer" class="action-log-container">
+					<div v-for="(log, index) in actionLog" :key="index">
+						{{ log }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Messaggio se non ci sono personaggi -->
+	<div v-else>
+		<h2>Nessun personaggio disponibile!</h2>
+	</div>
+</div>
+	
+</template>
+
+<style lang="scss" scoped>
+
+.bg-img{
+	background-image: url(../assets/epic_battle.png);
+	background-size: cover;
+}
+
+.container{
+	height: 100vh;
 }
 
 .character-selection,
@@ -379,20 +377,133 @@ export default {
 	text-align: center;
 }
 
+.character-selection{
+	justify-content: center;
+	h2{
+		color: #d4af37;
+		font-weight: bolder;
+		font-size: 50px;
+	}
+	.card{
+		width: 300px;
+		margin: auto;
+		h5{
+			color: #d4af37;
+			font-weight: bold;
+			font-size: 25px;
+		}
+		img{
+			width: 100%;
+		}
+	}
+}
+
 .button-group {
 	margin: 20px 0;
 }
 
-.button-group button,
+.button-group button {
+	background: linear-gradient(45deg, #000000, #2f4f2f);
+	width: 125px;
+	height: 40px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: #d4af37;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	margin: 0 50px;
+	border: 1px solid #000;
+	transition: 0.3s;
+	&:hover{
+		transform: scale(1.15);
+	}
+}
+
+.start-game {
+	background: linear-gradient(45deg, #000000, #2f4f2f);
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #d4af37;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	margin: 0 50px;
+	border: 1px solid #000;
+	transition: 0.3s;
+	&:hover{
+		transform: scale(1.15);
+	}
+}
+
 .reset-button {
-	margin: 0 10px;
-	padding: 10px 20px;
+	background: linear-gradient(45deg, #000000, #2f4f2f);
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #d4af37;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	margin: 0 50px;
+	border: 1px solid #000;
+	transition: 0.3s;
+	&:hover{
+		transform: scale(1.15);
+	}
+}
+
+.game-button{
+	background: linear-gradient(45deg, #000000, #2f4f2f);
+	width: 200px;
+	height: 50px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #d4af37;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	margin: 0 50px;
+	border: 1px solid #000;
+	transition: 0.3s;
+	&:hover{
+		transform: scale(1.15);
+	}
 }
 
 .battle-screen {
-	border: 2px solid #ccc;
+	border: 2px solid #d4af37;
 	padding: 20px;
 	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.65);
+	.player-info{
+		width: 400px;
+		margin-right: 50px;
+		h3{
+			color: #d4af37;
+			font-weight: bolder;
+		}
+		img{
+			width: 100%;
+			border-radius: 15px;
+		}
+	}
+	.enemy-info{
+		width: 400px;
+		margin-left: 50px;
+		h3{
+			color: #d4af37;
+			font-weight: bolder;
+		}
+		img{
+			width: 100%;
+			border-radius: 15px;
+		}
+	}
+	
 }
 
 .progress {

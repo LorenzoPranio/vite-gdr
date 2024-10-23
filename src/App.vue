@@ -13,8 +13,9 @@ export default {
 			return this.$route.path !== "/";
 		},
 		showFooter() {
-			return this.$route.path !== "/";
-		},
+            const hiddenFooterPaths = ["/", "/game-two"];
+            return !hiddenFooterPaths.includes(this.$route.path);
+        },
 	},
 };
 </script>
@@ -23,7 +24,7 @@ export default {
 	<div>
 		<AppNavbar v-if="showNavbar" />
 		<router-view></router-view>
-		<!-- <AppFooter v-if="showFooter" /> -->
+		<AppFooter v-if="showFooter" />
 	</div>
 </template>
 
